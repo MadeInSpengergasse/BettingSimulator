@@ -1,4 +1,5 @@
 # BettingSimulator
+
 This gonna be a betting simulator which will do the following things:
 .)reading data about different teams and their quotes
 .)calculating the odds for the teams
