@@ -1,4 +1,4 @@
-package main;
+package vombokombo.BettingSimulator.model;
 
 import java.util.ArrayList;
 
