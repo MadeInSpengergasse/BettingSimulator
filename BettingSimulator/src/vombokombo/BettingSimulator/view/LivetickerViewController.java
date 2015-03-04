@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
 public class LivetickerViewController {
 
@@ -41,13 +42,16 @@ public class LivetickerViewController {
 
 	@FXML
 	public void closeButton() {
-		System.exit(0);
+		((Stage)time.getScene().getWindow()).close();
+		//System.exit(0);
 	}
 
 	@FXML
 	public void skipButton() {
 		time.setText("SKIP!!");
 		System.out.println("Skip Button");
+		teamA.setText("hi");
+		teamB.setText("test123");
 	}
 
 	@FXML
@@ -58,16 +62,18 @@ public class LivetickerViewController {
 			counter = new Counter(time, 1000);
 		}
 	}
-	
+
 	@FXML
-	public void stop_resumeButton(){
+	public void stop_resumeButton() {
 		counter.stopResume();
 		System.out.println("StopResume Button");
 	}
-	
+
 	@FXML
-	public void forwardButton(){
+	public void forwardButton() {
 		System.out.println("Forward Button");
-		counter = new Counter(time, 1);
+		if (counter == null) {
+			counter = new Counter(time, 1);
+		}
 	}
 }

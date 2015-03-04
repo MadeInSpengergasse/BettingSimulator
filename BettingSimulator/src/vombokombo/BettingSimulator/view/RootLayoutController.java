@@ -23,9 +23,9 @@ public class RootLayoutController {
 	@FXML
 	public void aboutMenu() {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("About");
-		alert.setHeaderText("Betting Simulator");
-		alert.setContentText("Programming, Design & Idea:\n   Faltl Philipp\n   Weber Lukas\n   Weiss Luca");
+		alert.setTitle("About: Betting Simulator");
+		alert.setHeaderText("Programming, Design & Idea");
+		alert.setContentText("   Faltl Philipp\n   Weber Lukas\n   Weiss Luca");
 
 		alert.showAndWait();
 		
