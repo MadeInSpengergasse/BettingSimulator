@@ -2,7 +2,7 @@ package vombokombo.BettingSimulator;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Timer;
+import org.reactfx.util.Timer;
 import java.util.TimerTask;
 
 import org.reactfx.util.FxTimer;
@@ -27,8 +27,6 @@ public class Counter
 		        () -> scheduledTask());
 		
 	}
-	
-	public void 
 	
 	public void scheduledTask(){
 		increaseSecond();

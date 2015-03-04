@@ -1,6 +1,5 @@
 package vombokombo.BettingSimulator.view;
 
-
 import vombokombo.BettingSimulator.Counter;
 import vombokombo.BettingSimulator.MainApp;
 import javafx.fxml.FXML;
@@ -12,49 +11,53 @@ import javafx.scene.control.TextField;
 
 public class LivetickerViewController {
 
+	Counter counter;
+
 	@FXML
 	private TextArea teamA;
 	@FXML
 	private TextArea teamB;
-	
+
 	@FXML
 	private Label time;
-	
+
 	@FXML
 	private TableColumn<String, String> timeStamp;
-	
+
 	@FXML
 	private TableColumn<String, String> event;
 
 	private MainApp mainApp;
-	
-	public LivetickerViewController(){
+
+	public LivetickerViewController() {
 	}
-	
+
 	@FXML
-	private void initialize(){
-		
+	private void initialize() {
+
 	}
-	
-	public void setMainApp(MainApp mainApp){
+
+	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
-	
+
 	@FXML
-	public void closeButton(){
+	public void closeButton() {
 		System.exit(1);
 	}
-	
+
 	@FXML
-	public void skipButton(){
+	public void skipButton() {
 		time.setText("hi");
 	}
-	
+
 	@FXML
-	public void startButton(){
+	public void startButton() {
 		System.out.println("start");
-		Counter counter = new Counter(time);
+		if (counter == null) {
+			counter = new Counter(time);
+		}
 		System.out.println("teststart");
-		
+
 	}
 }
