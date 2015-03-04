@@ -1,6 +1,7 @@
 package vombokombo.BettingSimulator.view;
 
 
+import vombokombo.BettingSimulator.Counter;
 import vombokombo.BettingSimulator.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -39,4 +40,21 @@ public class LivetickerViewController {
 		this.mainApp = mainApp;
 	}
 	
+	@FXML
+	public void closeButton(){
+		System.exit(1);
+	}
+	
+	@FXML
+	public void skipButton(){
+		time.setText("hi");
+	}
+	
+	@FXML
+	public void startButton(){
+		System.out.println("start");
+		Counter counter = new Counter(time);
+		System.out.println("teststart");
+		
+	}
 }

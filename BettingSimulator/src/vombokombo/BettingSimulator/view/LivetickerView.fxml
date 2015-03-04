@@ -42,13 +42,13 @@
                <children>
                   <HBox spacing="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Start" />
+                        <Button mnemonicParsing="false" onAction="#startButton" text="Start" />
                         <Button mnemonicParsing="false" text="Stop/Resume" />
                         <Button mnemonicParsing="false" text="Forward" />
-                        <Button layoutX="8.0" layoutY="214.0" mnemonicParsing="false" text="Skip" />
+                        <Button layoutX="8.0" layoutY="214.0" mnemonicParsing="false" onAction="#skipButton" text="Skip" />
                      </children>
                   </HBox>
-                  <Button layoutX="339.0" layoutY="214.0" mnemonicParsing="false" text="Close" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Button layoutX="339.0" layoutY="214.0" mnemonicParsing="false" onAction="#closeButton" text="Close" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
                   <TableView layoutX="89.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="timeStamp" prefWidth="107.0" text="Timestamp" />
