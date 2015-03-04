@@ -51,11 +51,15 @@ public class LivetickerViewController {
 
 	@FXML
 	public void startButton() {
-		System.out.println("start");
 		if (counter == null) {
+			System.out.println("start");
 			counter = new Counter(time);
+			System.out.println("teststart");
 		}
-		System.out.println("teststart");
-
+	}
+	
+	@FXML
+	public void stop_resumeButton(){
+		counter.stopResume();
 	}
 }
