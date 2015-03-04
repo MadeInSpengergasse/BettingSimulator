@@ -41,25 +41,32 @@ public class LivetickerViewController {
 
 	@FXML
 	public void closeButton() {
-		System.exit(1);
+		System.exit(0);
 	}
 
 	@FXML
 	public void skipButton() {
-		time.setText("hi");
+		time.setText("SKIP!!");
+		System.out.println("Skip Button");
 	}
 
 	@FXML
 	public void startButton() {
+		System.out.println("Start Button");
 		if (counter == null) {
-			System.out.println("start");
-			counter = new Counter(time);
-			System.out.println("teststart");
+			System.out.println("Real Start");
+			counter = new Counter(time, 1000);
 		}
 	}
 	
 	@FXML
 	public void stop_resumeButton(){
 		counter.stopResume();
+		System.out.println("StopResume Button");
+	}
+	
+	@FXML
+	public void forwardButton(){
+		System.out.println("Forward Button");
 	}
 }

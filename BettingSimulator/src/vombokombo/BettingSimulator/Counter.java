@@ -1,6 +1,8 @@
 package vombokombo.BettingSimulator;
 
+import java.text.NumberFormat;
 import java.time.Duration;
+
 import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
 
@@ -17,14 +19,15 @@ public class Counter
 	
 	private Label timeLabel;
 
-	public Counter(Label timeLabelP)
+	public Counter(Label timeLabelP, int delay)
 	{
 		
 		this.timeLabel = timeLabelP;
 		
 		timer = FxTimer.runPeriodically(
-		        Duration.ofMillis(1000),
+		        Duration.ofMillis(delay),
 		        () -> scheduledTask());
+		
 		status = true;
 	}
 	
@@ -46,21 +49,25 @@ public class Counter
 		int minutes = totalMinutes % MINUTES_IN_AN_HOUR;
 		int hours = totalMinutes / MINUTES_IN_AN_HOUR;
 		
-		return hours + ":" + minutes + ":" + seconds;
+		NumberFormat nf = NumberFormat.getIntegerInstance();
+		nf.setMinimumIntegerDigits(2);
+		nf.setGroupingUsed(false);
+		
+		return nf.format(hours) + ":" + nf.format(minutes) + ":" + nf.format(seconds);
 	}
 	
 	public void stopResume(){
-		//timer.stop();
-		/*
 		if(status == false){
 			System.out.println("Timer stopped, now started!");
 			timer.restart();
+			status = true;
 		} else {
 			System.out.println("Timer started, now stopped!");
 			timer.stop();
+			status = false;
 			
 		}
-		*/
 	}
+
 	
 }

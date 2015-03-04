@@ -8,12 +8,12 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.LivetickerViewController">
    <children>
-      <Label layoutX="148.0" layoutY="14.0" text="Liveticker" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="10.0">
+      <Label layoutX="148.0" layoutY="10.0" text="Liveticker" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="time" layoutX="158.0" layoutY="46.0" text="HH:MM:SS" AnchorPane.topAnchor="46.0">
+      <Label fx:id="time" layoutX="167.0" layoutY="46.0" text="00:00:00" textAlignment="CENTER" AnchorPane.topAnchor="46.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -44,7 +44,7 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#startButton" text="Start" />
                         <Button mnemonicParsing="false" onAction="#stop_resumeButton" text="Stop/Resume" />
-                        <Button mnemonicParsing="false" text="Forward" />
+                        <Button mnemonicParsing="false" onAction="#forwardButton" text="Forward" />
                         <Button layoutX="8.0" layoutY="214.0" mnemonicParsing="false" onAction="#skipButton" text="Skip" />
                      </children>
                   </HBox>
