@@ -1,5 +1,6 @@
 package vombokombo.BettingSimulator;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,9 +9,9 @@ import org.reactfx.util.FxTimer;
 
 import javafx.scene.control.Label;
 
+
 public class Counter
 {
-	
 	Timer timer;
 
 	private int timeSeconds;
@@ -20,8 +21,18 @@ public class Counter
 	public Counter(Label timeLabelP)
 	{
 		this.timeLabel = timeLabelP;
-
 		
+		timer = FxTimer.runPeriodically(
+		        Duration.ofMillis(1000),
+		        () -> scheduledTask());
+		
+	}
+	
+	public void 
+	
+	public void scheduledTask(){
+		increaseSecond();
+		timeLabel.setText(getTime(timeSeconds));
 	}
 	
 	public void increaseSecond(){
