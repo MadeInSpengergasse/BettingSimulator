@@ -13,7 +13,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="158.0" layoutY="46.0" text="HH:MM:SS" AnchorPane.topAnchor="46.0">
+      <Label fx:id="time" layoutX="158.0" layoutY="46.0" text="HH:MM:SS" AnchorPane.topAnchor="46.0">
          <font>
             <Font size="18.0" />
          </font>
