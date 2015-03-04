@@ -68,5 +68,6 @@ public class LivetickerViewController {
 	@FXML
 	public void forwardButton(){
 		System.out.println("Forward Button");
+		counter = new Counter(time, 1);
 	}
 }
