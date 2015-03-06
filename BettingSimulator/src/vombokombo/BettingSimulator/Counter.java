@@ -1,11 +1,11 @@
 package vombokombo.BettingSimulator;
 
-import java.text.NumberFormat;
 import java.time.Duration;
 
 import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
 
+import vombokombo.BettingSimulator.util.TimeStamp;
 import javafx.scene.control.Label;
 
 
@@ -33,28 +33,14 @@ public class Counter
 	
 	public void scheduledTask(){
 		increaseSecond();
-		timeLabel.setText(getTime(timeSeconds));
+		timeLabel.setText(TimeStamp.convert(timeSeconds));
 	}
 	
 	public void increaseSecond(){
 		timeSeconds++;
 	}
 	
-	public String getTime(int totalSeconds){
-		
-		final int MINUTES_IN_AN_HOUR = 60;
-		final int SECONDS_IN_A_MINUTE = 60;
-		int seconds = totalSeconds % SECONDS_IN_A_MINUTE;
-		int totalMinutes = totalSeconds / SECONDS_IN_A_MINUTE;
-		int minutes = totalMinutes % MINUTES_IN_AN_HOUR;
-		int hours = totalMinutes / MINUTES_IN_AN_HOUR;
-		
-		NumberFormat nf = NumberFormat.getIntegerInstance();
-		nf.setMinimumIntegerDigits(2);
-		nf.setGroupingUsed(false);
-		
-		return nf.format(hours) + ":" + nf.format(minutes) + ":" + nf.format(seconds);
-	}
+
 	
 	public void stopResume(){
 		if(status == false){
@@ -67,6 +53,10 @@ public class Counter
 			status = false;
 			
 		}
+	}
+
+	public int getTimeSeconds() {
+		return timeSeconds;
 	}
 
 	

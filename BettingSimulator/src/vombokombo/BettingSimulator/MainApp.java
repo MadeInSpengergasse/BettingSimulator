@@ -2,6 +2,7 @@ package vombokombo.BettingSimulator;
 
 import java.io.IOException;
 
+import vombokombo.BettingSimulator.view.LivetickerViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,7 +22,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
+        showLiveticker();
     }
 
     /**
@@ -46,15 +47,18 @@ public class MainApp extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public void showLiveticker() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/LivetickerView.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane livetickerView = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(livetickerView);
+            
+            LivetickerViewController controller = loader.getController();
+            controller.setMainApp(this);
             
         } catch (IOException e) {
             e.printStackTrace();
