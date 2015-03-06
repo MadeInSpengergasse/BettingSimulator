@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
 public class LivetickerViewController {
 
@@ -60,13 +61,19 @@ public class LivetickerViewController {
 
 	@FXML
 	public void closeButton() {
-		System.exit(0);
+		((Stage)time.getScene().getWindow()).close();
+		//System.exit(0);
 	}
 
 	@FXML
 	public void skipButton() {
 		System.out.println("Skip Button");
+<<<<<<< HEAD
 		addEvent(counter.getTimeSeconds(), "testevent");
+=======
+		teamA.setText("hi");
+		teamB.setText("test123");
+>>>>>>> origin/master
 	}
 
 	@FXML
@@ -77,17 +84,19 @@ public class LivetickerViewController {
 			counter = new Counter(time, 1000);
 		}
 	}
-	
+
 	@FXML
-	public void stop_resumeButton(){
+	public void stop_resumeButton() {
 		counter.stopResume();
 		System.out.println("StopResume Button");
 	}
-	
+
 	@FXML
-	public void forwardButton(){
+	public void forwardButton() {
 		System.out.println("Forward Button");
-		counter = new Counter(time, 1);
+		if (counter == null) {
+			counter = new Counter(time, 1);
+		}
 	}
 	
 	public void setTeamA(String text){
