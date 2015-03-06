@@ -68,12 +68,9 @@ public class LivetickerViewController {
 	@FXML
 	public void skipButton() {
 		System.out.println("Skip Button");
-<<<<<<< HEAD
+
 		addEvent(counter.getTimeSeconds(), "testevent");
-=======
-		teamA.setText("hi");
-		teamB.setText("test123");
->>>>>>> origin/master
+
 	}
 
 	@FXML
