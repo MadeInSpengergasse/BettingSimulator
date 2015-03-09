@@ -20,7 +20,7 @@ public class LivetickerViewController {
 	private TextArea teamA;
 	@FXML
 	private TextArea teamB;
-	
+
 	@FXML
 	private Label scoreTeamA;
 	@FXML
@@ -31,7 +31,7 @@ public class LivetickerViewController {
 
 	@FXML
 	private TableView<Event> eventTable;
-	
+
 	@FXML
 	private TableColumn<Event, String> timeStamp;
 
@@ -39,7 +39,7 @@ public class LivetickerViewController {
 	private TableColumn<Event, String> event;
 
 	private MainApp mainApp;
-	
+
 	private ObservableList<Event> events;
 
 	public LivetickerViewController() {
@@ -48,29 +48,31 @@ public class LivetickerViewController {
 
 	@FXML
 	private void initialize() {
-		event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
-		timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
-		
+		event.setCellValueFactory(cellData -> cellData.getValue()
+				.getEventProperty());
+		timeStamp.setCellValueFactory(cellData -> cellData.getValue()
+				.getTimeStampProperty());
+
 	}
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
-		
+
 		eventTable.setItems(events);
 	}
 
 	@FXML
 	public void closeButton() {
-		((Stage)time.getScene().getWindow()).close();
-		//System.exit(0);
+		((Stage) time.getScene().getWindow()).close();
+		// System.exit(0);
 	}
 
 	@FXML
 	public void skipButton() {
 		System.out.println("Skip Button");
-
-		addEvent(counter.getTimeSeconds(), "testevent");
-
+		if (counter != null) {
+			addEvent(counter.getTimeSeconds(), "testevent");
+		}
 	}
 
 	@FXML
@@ -84,7 +86,9 @@ public class LivetickerViewController {
 
 	@FXML
 	public void stop_resumeButton() {
-		counter.stopResume();
+		if (counter != null) {
+			counter.stopResume();
+		}
 		System.out.println("StopResume Button");
 	}
 
@@ -95,24 +99,24 @@ public class LivetickerViewController {
 			counter = new Counter(time, 1);
 		}
 	}
-	
-	public void setTeamA(String text){
+
+	public void setTeamA(String text) {
 		teamA.setText(text);
 	}
-	
-	public void setTeamB(String text){
+
+	public void setTeamB(String text) {
 		teamB.setText(text);
 	}
-	
-	public void setScoreTeamA(String score){
+
+	public void setScoreTeamA(String score) {
 		scoreTeamA.setText(score);
 	}
-	
-	public void setScoreTeamB(String score){
+
+	public void setScoreTeamB(String score) {
 		scoreTeamB.setText(score);
 	}
-	
-	public void addEvent(int timeSeconds, String event){
+
+	public void addEvent(int timeSeconds, String event) {
 		events.add(new Event(timeSeconds, event));
 	}
 }
