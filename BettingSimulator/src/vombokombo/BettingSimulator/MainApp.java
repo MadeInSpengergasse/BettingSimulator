@@ -10,21 +10,14 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-
-
-
-
-
-
 import vombokombo.BettingSimulator.util.ExceptionDialog;
 import vombokombo.BettingSimulator.util.Save;
 import vombokombo.BettingSimulator.view.LivetickerViewController;
 import vombokombo.BettingSimulator.view.MainViewController;
+import vombokombo.BettingSimulator.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -64,10 +57,14 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+            
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -137,7 +134,7 @@ public class MainApp extends Application {
 			Unmarshaller um = context.createUnmarshaller();
 			
 			Save save = (Save) um.unmarshal(file);
-			
+			setMoney(save.getMoney());
 			setFilePath(file);
 			
 		} catch (JAXBException e) {

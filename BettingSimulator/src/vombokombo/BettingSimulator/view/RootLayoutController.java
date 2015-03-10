@@ -1,13 +1,22 @@
 package vombokombo.BettingSimulator.view;
 
+import java.io.File;
+
+import vombokombo.BettingSimulator.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class RootLayoutController {
+	
+	private MainApp mainapp;
 
 	public RootLayoutController() {
 
+	}
+	
+	public void setMainApp(MainApp mainapp){
+		this.mainapp = mainapp;
 	}
 
 	@FXML
@@ -30,5 +39,27 @@ public class RootLayoutController {
 		alert.showAndWait();
 		
 	}
+	
+
+	@FXML
+	private void newMenu(){
+		
+	}
+	
+	@FXML
+	private void openMenu(){
+		mainapp.loadDataFromFile(new File("save1.save"));
+	}
+	
+	@FXML
+	private void saveMenu(){
+		mainapp.saveDataToFile(new File("save1.save"));
+	}
+	
+	@FXML
+	private void saveAsMenu(){
+		
+	}
+	
 
 }
