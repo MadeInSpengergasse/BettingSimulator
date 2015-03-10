@@ -26,6 +26,12 @@ public class MainViewController {
 	}
 	
 	@FXML
+	private void moneyyyy(){
+		mainapp.setMoney(mainapp.getMoney());
+		
+	}
+	
+	@FXML
 	private void openLiveticker(){
 		mainapp.showLiveticker();
 	}
@@ -34,5 +40,8 @@ public class MainViewController {
 		this.mainapp = mainapp;
 	}
 	
-	
+	public void setMoney(int money) {
+		this.money.setText(money + " €");
+	}
+
 }

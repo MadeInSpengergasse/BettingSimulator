@@ -1,24 +1,51 @@
 package vombokombo.BettingSimulator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+
+
+
+
+
+
+import vombokombo.BettingSimulator.util.ExceptionDialog;
+import vombokombo.BettingSimulator.util.Save;
 import vombokombo.BettingSimulator.view.LivetickerViewController;
 import vombokombo.BettingSimulator.view.MainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    
+    private MainViewController mainViewController;
+    
+    private int money;
 
     @Override
     public void start(Stage primaryStage) {
+    	
+    	Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
+    	ExceptionDialog.showExceptionDialog(ex);
+    	
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Main");
 
@@ -83,8 +110,8 @@ public class MainApp extends Application {
             // Set person overview into the center of root layout.
             rootLayout.setCenter(mainView);
             
-            MainViewController controller = loader.getController();
-            controller.setMainApp(this);
+            mainViewController = loader.getController();
+            mainViewController.setMainApp(this);
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,4 +129,81 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    public boolean loadDataFromFile(File file){
+    	
+    	try {
+			JAXBContext context = JAXBContext.newInstance(Save.class);
+			Unmarshaller um = context.createUnmarshaller();
+			
+			Save save = (Save) um.unmarshal(file);
+			
+			setFilePath(file);
+			
+		} catch (JAXBException e) {
+			ExceptionDialog.showExceptionDialog(e);
+		}
+    	
+    	
+    	//TODO: Get everything from the file
+    	
+    	
+    	
+    	return false;
+    }
+    
+    public boolean saveDataToFile(File file){
+    	
+        try {
+            JAXBContext context = JAXBContext
+                    .newInstance(Save.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Wrapping our person data.
+            Save save = new Save();
+            save.setMoney(money);
+
+            // Marshalling and saving XML to the file.
+            m.marshal(save, file);
+
+            // Save the file path to the registry.
+            setFilePath(file);
+        } catch (Exception e) { // catches ANY exception
+        	ExceptionDialog.showExceptionDialog(e);
+        }
+    	
+    	
+    	
+    	return false;
+    }
+    
+    public void setFilePath(File file){
+    	Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+    	
+    	if(file != null){
+    		prefs.put("filePath", file.getPath());
+    	} else {
+    		prefs.remove("filePath");
+    	}
+    }
+    
+    public File getFilePath(){
+    	Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+    	String filePath = prefs.get("filePath", null);
+    	if(filePath != null){
+    		return new File(filePath);
+    	} else {
+    		return null;
+    	}
+    }
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+		mainViewController.setMoney(money);
+	}
 }
