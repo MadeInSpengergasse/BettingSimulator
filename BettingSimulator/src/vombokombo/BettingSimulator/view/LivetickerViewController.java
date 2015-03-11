@@ -81,7 +81,7 @@ public class LivetickerViewController {
 		System.out.println("Start Button");
 		if (counter == null) {
 			System.out.println("Real Start");
-			counter = new Counter(time, 1000);
+			counter = new Counter(time, 20);
 		}
 	}
 

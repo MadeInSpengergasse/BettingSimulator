@@ -5,6 +5,8 @@ import java.time.Duration;
 import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
 
+import vombokombo.BettingSimulator.model.Event;
+import vombokombo.BettingSimulator.model.Events;
 import vombokombo.BettingSimulator.util.TimeStamp;
 import javafx.scene.control.Label;
 
@@ -34,6 +36,16 @@ public class Counter
 	public void scheduledTask(){
 		increaseSecond();
 		timeLabel.setText(TimeStamp.convert(timeSeconds));
+		
+		Event event = Events.generateEvent("Team A", "Team B", timeSeconds);
+		if(event != null){
+			switch (event.getType()){
+			case GOAL:
+				break;
+			default:
+				break;
+			}
+		}
 	}
 	
 	public void increaseSecond(){
