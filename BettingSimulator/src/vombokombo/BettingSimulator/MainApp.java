@@ -3,6 +3,8 @@ package vombokombo.BettingSimulator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.prefs.Preferences;
 
 import javax.xml.bind.JAXBContext;
@@ -18,6 +20,7 @@ import vombokombo.BettingSimulator.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -31,7 +34,9 @@ public class MainApp extends Application {
     
     private MainViewController mainViewController;
     
-    private int money;
+    private float money;
+    
+    private Label moneyLabel;
 
     @Override
     public void start(Stage primaryStage) {
@@ -109,6 +114,7 @@ public class MainApp extends Application {
             
             mainViewController = loader.getController();
             mainViewController.setMainApp(this);
+            moneyLabel = mainViewController.getMoneyLabel();
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -195,12 +201,13 @@ public class MainApp extends Application {
     	}
     }
 
-	public int getMoney() {
+	public float getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(float money) {
 		this.money = money;
-		mainViewController.setMoney(money);
+		DecimalFormat df = new DecimalFormat("0.00");
+		moneyLabel.setText(df.format(money) + " €");
 	}
 }

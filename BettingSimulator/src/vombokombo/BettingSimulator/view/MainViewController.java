@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 public class MainViewController {
 	
 	@FXML
-	private Label money;
+	private Label moneyLabel;
 
 	private MainApp mainapp;
 	
@@ -27,7 +27,7 @@ public class MainViewController {
 	
 	@FXML
 	private void moneyyyy(){
-		mainapp.setMoney(mainapp.getMoney());
+		mainapp.setMoney(mainapp.getMoney()+100);
 		
 	}
 	
@@ -40,8 +40,8 @@ public class MainViewController {
 		this.mainapp = mainapp;
 	}
 	
-	public void setMoney(int money) {
-		this.money.setText(money + " €");
-	}
 
+	public Label getMoneyLabel(){
+		return moneyLabel;
+	}
 }
