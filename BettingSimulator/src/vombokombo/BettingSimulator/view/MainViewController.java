@@ -28,7 +28,6 @@ public class MainViewController {
 	@FXML
 	private void moneyyyy(){
 		mainapp.setMoney(mainapp.getMoney()+100);
-		
 	}
 	
 	@FXML

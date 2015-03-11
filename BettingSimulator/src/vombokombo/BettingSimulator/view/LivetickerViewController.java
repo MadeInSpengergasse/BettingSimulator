@@ -3,6 +3,7 @@ package vombokombo.BettingSimulator.view;
 import vombokombo.BettingSimulator.Counter;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Event;
+import vombokombo.BettingSimulator.model.Event.EventType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,7 +72,7 @@ public class LivetickerViewController {
 	public void skipButton() {
 		System.out.println("Skip Button");
 		if (counter != null) {
-			addEvent(counter.getTimeSeconds(), "testevent");
+			addEvent(counter.getTimeSeconds(), "testevent", EventType.UNKNOWN);
 		}
 	}
 
@@ -116,7 +117,7 @@ public class LivetickerViewController {
 		scoreTeamB.setText(score);
 	}
 
-	public void addEvent(int timeSeconds, String event) {
-		events.add(new Event(timeSeconds, event));
+	public void addEvent(int timeSeconds, String event, EventType type) {
+		events.add(new Event(timeSeconds, event, type));
 	}
 }

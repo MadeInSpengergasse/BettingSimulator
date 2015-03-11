@@ -6,16 +6,22 @@ import javafx.beans.property.StringProperty;
 
 public class Event {
 	
+	public enum EventType {
+		GOAL, UNKNOWN
+	}
+	
 	private final StringProperty timeStamp;
 	private final StringProperty event;
+	private final EventType type;
 	
-	public Event(int timeSeconds, String event){
+	public Event(int timeSeconds, String event, EventType type){
 		this.timeStamp = new SimpleStringProperty(TimeStamp.convert(timeSeconds));
 		this.event = new SimpleStringProperty(event);
+		this.type = type;
 	}
 	
 	public Event(){
-		this(0, "empty");
+		this(0, "empty", EventType.UNKNOWN);
 	}
 
 	public String getTimeStamp() {
@@ -32,5 +38,9 @@ public class Event {
 	
 	public StringProperty getEventProperty(){
 		return event;
+	}
+
+	public EventType getType() {
+		return type;
 	}
 }
