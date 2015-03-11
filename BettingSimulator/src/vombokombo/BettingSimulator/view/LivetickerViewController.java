@@ -96,7 +96,7 @@ public class LivetickerViewController {
 	@FXML
 	public void forwardButton() {
 		System.out.println("Forward Button");
-		if (counter == null) {
+	if (counter == null) {
 			counter = new Counter(time, 1);
 		}
 	}
