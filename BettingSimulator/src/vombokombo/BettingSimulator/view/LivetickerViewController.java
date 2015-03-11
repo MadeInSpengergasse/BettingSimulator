@@ -3,6 +3,7 @@ package vombokombo.BettingSimulator.view;
 import vombokombo.BettingSimulator.Counter;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Event;
+import vombokombo.BettingSimulator.model.Events;
 import vombokombo.BettingSimulator.model.Event.EventType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -72,7 +73,7 @@ public class LivetickerViewController {
 	public void skipButton() {
 		System.out.println("Skip Button");
 		if (counter != null) {
-			addEvent(counter.getTimeSeconds(), "testevent", EventType.UNKNOWN);
+			addEvent(new Event(counter.getTimeSeconds(), "testevent", EventType.UNKNOWN));
 		}
 	}
 
@@ -81,7 +82,7 @@ public class LivetickerViewController {
 		System.out.println("Start Button");
 		if (counter == null) {
 			System.out.println("Real Start");
-			counter = new Counter(time, 20);
+			counter = new Counter(time, 20, this);
 		}
 	}
 
@@ -96,8 +97,8 @@ public class LivetickerViewController {
 	@FXML
 	public void forwardButton() {
 		System.out.println("Forward Button");
-	if (counter == null) {
-			counter = new Counter(time, 1);
+		if (counter == null) {
+			counter = new Counter(time, 1, this);
 		}
 	}
 
@@ -116,8 +117,31 @@ public class LivetickerViewController {
 	public void setScoreTeamB(String score) {
 		scoreTeamB.setText(score);
 	}
-
+	
+	public int getScoreTeamA(){
+		return Integer.parseInt(scoreTeamA.getText());
+	}
+	
+	public int getScoreTeamB(){
+		return Integer.parseInt(scoreTeamB.getText());
+	}
+/*
 	public void addEvent(int timeSeconds, String event, EventType type) {
 		events.add(new Event(timeSeconds, event, type));
 	}
+*/
+	public void addEvent(Event event) {
+		if(event != null){
+			switch (event.getType()){
+			case GOAL:
+				setScoreTeamA(Integer.toString(getScoreTeamA()+1));
+				break;
+			default:
+				break;
+			}
+		}
+		events.add(event);
+	}
+
+	
 }
