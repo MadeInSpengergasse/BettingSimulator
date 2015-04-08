@@ -40,3 +40,7 @@ local.properties
 =======
 .texlipse
 >>>>>>> c70d474fa0301ee7ca0fa8095995dc6c35608575
+
+
+# IntelliJ
+.idea/
