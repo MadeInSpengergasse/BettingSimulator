@@ -16,132 +16,133 @@ import javafx.stage.Stage;
 
 public class LivetickerViewController {
 
-	Counter counter;
+    Counter counter;
 
-	@FXML
-	private TextArea teamA;
-	@FXML
-	private TextArea teamB;
+    @FXML
+    private TextArea teamA;
+    @FXML
+    private TextArea teamB;
 
-	@FXML
-	private Label scoreTeamA;
-	@FXML
-	private Label scoreTeamB;
+    @FXML
+    private Label scoreTeamA;
+    @FXML
+    private Label scoreTeamB;
 
-	@FXML
-	private Label time;
+    @FXML
+    private Label time;
 
-	@FXML
-	private TableView<Event> eventTable;
+    @FXML
+    private TableView<Event> eventTable;
 
-	@FXML
-	private TableColumn<Event, String> timeStamp;
+    @FXML
+    private TableColumn<Event, String> timeStamp;
 
-	@FXML
-	private TableColumn<Event, String> event;
+    @FXML
+    private TableColumn<Event, String> event;
 
-	private MainApp mainApp;
+    private MainApp mainApp;
 
-	private ObservableList<Event> events;
+    private ObservableList<Event> events;
 
-	public LivetickerViewController() {
-		events = FXCollections.observableArrayList();
-	}
+    public LivetickerViewController() {
+        events = FXCollections.observableArrayList();
+    }
 
-	@FXML
-	private void initialize() {
-		event.setCellValueFactory(cellData -> cellData.getValue()
-				.getEventProperty());
-		timeStamp.setCellValueFactory(cellData -> cellData.getValue()
-				.getTimeStampProperty());
+    @FXML
+    private void initialize() {
+        event.setCellValueFactory(cellData -> cellData.getValue()
+                .getEventProperty());
+        timeStamp.setCellValueFactory(cellData -> cellData.getValue()
+                .getTimeStampProperty());
 
-	}
+    }
 
-	public void setMainApp(MainApp mainApp) {
-		this.mainApp = mainApp;
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
 
-		eventTable.setItems(events);
-	}
+        eventTable.setItems(events);
+    }
 
-	@FXML
-	public void closeButton() {
-		((Stage) time.getScene().getWindow()).close();
-		// System.exit(0);
-	}
+    @FXML
+    public void closeButton() {
+        ((Stage) time.getScene().getWindow()).close();
+        // System.exit(0);
+    }
 
-	@FXML
-	public void skipButton() {
-		System.out.println("Skip Button");
-		if (counter != null) {
-			addEvent(new Event(counter.getTimeSeconds(), "testevent", EventType.UNKNOWN));
-		}
-	}
+    @FXML
+    public void skipButton() {
+        System.out.println("Skip Button");
+        if (counter != null) {
+            addEvent(new Event(counter.getTimeSeconds(), "testevent", EventType.UNKNOWN));
+        }
+    }
 
-	@FXML
-	public void startButton() {
-		System.out.println("Start Button");
-		if (counter == null) {
-			System.out.println("Real Start");
-			counter = new Counter(time, 20, this);
-		}
-	}
+    @FXML
+    public void startButton() {
+        System.out.println("Start Button");
+        if (counter == null) {
+            System.out.println("Real Start");
+            counter = new Counter(time, 20, this);
+        }
+    }
 
-	@FXML
-	public void stop_resumeButton() {
-		if (counter != null) {
-			counter.stopResume();
-		}
-		System.out.println("StopResume Button");
-	}
+    @FXML
+    public void stop_resumeButton() {
+        if (counter != null) {
+            counter.stopResume();
+        }
+        System.out.println("StopResume Button");
+    }
 
-	@FXML
-	public void forwardButton() {
-		System.out.println("Forward Button");
-		if (counter == null) {
-			counter = new Counter(time, 1, this);
-		}
-	}
+    @FXML
+    public void forwardButton() {
+        System.out.println("Forward Button");
+        if (counter == null) {
+            counter = new Counter(time, 1, this);
+        }
+    }
 
-	public void setTeamA(String text) {
-		teamA.setText(text);
-	}
+    public void setTeamA(String text) {
+        teamA.setText(text);
+    }
 
-	public void setTeamB(String text) {
-		teamB.setText(text);
-	}
+    public void setTeamB(String text) {
+        teamB.setText(text);
+    }
 
-	public void setScoreTeamA(String score) {
-		scoreTeamA.setText(score);
-	}
+    public void setScoreTeamA(String score) {
+        scoreTeamA.setText(score);
+    }
 
-	public void setScoreTeamB(String score) {
-		scoreTeamB.setText(score);
-	}
-	
-	public int getScoreTeamA(){
-		return Integer.parseInt(scoreTeamA.getText());
-	}
-	
-	public int getScoreTeamB(){
-		return Integer.parseInt(scoreTeamB.getText());
-	}
-/*
-	public void addEvent(int timeSeconds, String event, EventType type) {
-		events.add(new Event(timeSeconds, event, type));
-	}
-*/
-	public void addEvent(Event event) {
-		if(event != null){
-			switch (event.getType()){
-			case GOAL:
-				setScoreTeamA(Integer.toString(getScoreTeamA()+1));
-				break;
-			default:
-				break;
-			}
-		}
-		events.add(event);
-	}
+    public void setScoreTeamB(String score) {
+        scoreTeamB.setText(score);
+    }
 
-	
+    public int getScoreTeamA() {
+        return Integer.parseInt(scoreTeamA.getText());
+    }
+
+    public int getScoreTeamB() {
+        return Integer.parseInt(scoreTeamB.getText());
+    }
+
+    /*
+        public void addEvent(int timeSeconds, String event, EventType type) {
+            events.add(new Event(timeSeconds, event, type));
+        }
+    */
+    public void addEvent(Event event) {
+        if (event != null) {
+            switch (event.getType()) {
+                case GOAL:
+                    setScoreTeamA(Integer.toString(getScoreTeamA() + 1));
+                    break;
+                default:
+                    break;
+            }
+        }
+        events.add(event);
+    }
+
+
 }

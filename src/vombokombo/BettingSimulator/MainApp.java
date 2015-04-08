@@ -30,19 +30,19 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    
+
     private MainViewController mainViewController;
-    
+
     private float money;
-    
+
     private Label moneyLabel;
 
     @Override
     public void start(Stage primaryStage) {
-    	
-    	Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
-    	ExceptionDialog.showExceptionDialog(ex);
-    	
+
+        Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
+        ExceptionDialog.showExceptionDialog(ex);
+
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Main");
 
@@ -63,12 +63,12 @@ public class MainApp extends Application {
 
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
-            
+
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,7 +81,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/LivetickerView.fxml"));
             AnchorPane livetickerView = (AnchorPane) loader.load();
-            
+
             Stage livetickerStage = new Stage();
             livetickerStage.setTitle("Liveticker");
 
@@ -89,18 +89,18 @@ public class MainApp extends Application {
             livetickerStage.initOwner(primaryStage);
             Scene scene = new Scene(livetickerView);
             livetickerStage.setScene(scene);
-            
+
             LivetickerViewController controller = loader.getController();
             controller.setMainApp(this);
-            
+
             livetickerStage.showAndWait();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    
+
+
     public void showMainView() {
         try {
             // Load person overview.
@@ -110,11 +110,11 @@ public class MainApp extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(mainView);
-            
+
             mainViewController = loader.getController();
             mainViewController.setMainApp(this);
             moneyLabel = mainViewController.getMoneyLabel();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -122,6 +122,7 @@ public class MainApp extends Application {
 
     /**
      * Returns the main stage.
+     *
      * @return
      */
     public Stage getPrimaryStage() {
@@ -131,31 +132,30 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    public boolean loadDataFromFile(File file){
-    	
-    	try {
-			JAXBContext context = JAXBContext.newInstance(Save.class);
-			Unmarshaller um = context.createUnmarshaller();
-			
-			Save save = (Save) um.unmarshal(file);
-			setMoney(save.getMoney());
-			setFilePath(file);
-			
-		} catch (JAXBException e) {
-			ExceptionDialog.showExceptionDialog(e);
-		}
-    	
-    	
-    	//TODO: Get everything from the file
-    	
-    	
-    	
-    	return false;
+
+    public boolean loadDataFromFile(File file) {
+
+        try {
+            JAXBContext context = JAXBContext.newInstance(Save.class);
+            Unmarshaller um = context.createUnmarshaller();
+
+            Save save = (Save) um.unmarshal(file);
+            setMoney(save.getMoney());
+            setFilePath(file);
+
+        } catch (JAXBException e) {
+            ExceptionDialog.showExceptionDialog(e);
+        }
+
+
+        //TODO: Get everything from the file
+
+
+        return false;
     }
-    
-    public boolean saveDataToFile(File file){
-    	
+
+    public boolean saveDataToFile(File file) {
+
         try {
             JAXBContext context = JAXBContext
                     .newInstance(Save.class);
@@ -172,41 +172,40 @@ public class MainApp extends Application {
             // Save the file path to the registry.
             setFilePath(file);
         } catch (Exception e) { // catches ANY exception
-        	ExceptionDialog.showExceptionDialog(e);
+            ExceptionDialog.showExceptionDialog(e);
         }
-    	
-    	
-    	
-    	return false;
-    }
-    
-    public void setFilePath(File file){
-    	Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
-    	
-    	if(file != null){
-    		prefs.put("filePath", file.getPath());
-    	} else {
-    		prefs.remove("filePath");
-    	}
-    }
-    
-    public File getFilePath(){
-    	Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
-    	String filePath = prefs.get("filePath", null);
-    	if(filePath != null){
-    		return new File(filePath);
-    	} else {
-    		return null;
-    	}
+
+
+        return false;
     }
 
-	public float getMoney() {
-		return money;
-	}
+    public void setFilePath(File file) {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
 
-	public void setMoney(float money) {
-		this.money = money;
-		DecimalFormat df = new DecimalFormat("0.00");
-		moneyLabel.setText(df.format(money) + " €");
-	}
+        if (file != null) {
+            prefs.put("filePath", file.getPath());
+        } else {
+            prefs.remove("filePath");
+        }
+    }
+
+    public File getFilePath() {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        String filePath = prefs.get("filePath", null);
+        if (filePath != null) {
+            return new File(filePath);
+        } else {
+            return null;
+        }
+    }
+
+    public float getMoney() {
+        return money;
+    }
+
+    public void setMoney(float money) {
+        this.money = money;
+        DecimalFormat df = new DecimalFormat("0.00");
+        moneyLabel.setText(df.format(money) + " €");
+    }
 }
