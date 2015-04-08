@@ -3,7 +3,6 @@ package vombokombo.BettingSimulator.view;
 import vombokombo.BettingSimulator.Counter;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Event;
-import vombokombo.BettingSimulator.model.Events;
 import vombokombo.BettingSimulator.model.Event.EventType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

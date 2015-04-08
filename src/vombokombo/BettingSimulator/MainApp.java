@@ -120,11 +120,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Returns the main stage.
-     *
-     * @return
-     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }

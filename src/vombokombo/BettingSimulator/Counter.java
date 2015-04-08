@@ -5,7 +5,6 @@ import java.time.Duration;
 import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
 
-import vombokombo.BettingSimulator.model.Event;
 import vombokombo.BettingSimulator.model.Events;
 import vombokombo.BettingSimulator.util.TimeStamp;
 import vombokombo.BettingSimulator.view.LivetickerViewController;
@@ -49,7 +48,7 @@ public class Counter {
     }
 
     public void stopResume() {
-        if (status == false) {
+        if (!status) {
             System.out.println("Timer stopped, now started!");
             timer.restart();
             status = true;
