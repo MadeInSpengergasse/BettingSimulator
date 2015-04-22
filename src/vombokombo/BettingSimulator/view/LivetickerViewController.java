@@ -1,9 +1,6 @@
 package vombokombo.BettingSimulator.view;
 
-import vombokombo.BettingSimulator.Counter;
-import vombokombo.BettingSimulator.MainApp;
-import vombokombo.BettingSimulator.model.Event;
-import vombokombo.BettingSimulator.model.Event.EventType;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +9,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import vombokombo.BettingSimulator.Counter;
+import vombokombo.BettingSimulator.MainApp;
+import vombokombo.BettingSimulator.model.Event;
+import vombokombo.BettingSimulator.model.Event.EventType;
 
 public class LivetickerViewController {
 
@@ -49,11 +50,9 @@ public class LivetickerViewController {
 
     @FXML
     private void initialize() {
-        event.setCellValueFactory(cellData -> cellData.getValue()
-                .getEventProperty());
-        timeStamp.setCellValueFactory(cellData -> cellData.getValue()
-                .getTimeStampProperty());
-
+        System.out.println("init livetickerviewcontroller");
+        event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
+        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -131,16 +130,19 @@ public class LivetickerViewController {
         }
     */
     public void addEvent(Event event) {
-        if (event != null) {
-            switch (event.getType()) {
-                case GOAL:
-                    setScoreTeamA(Integer.toString(getScoreTeamA() + 1));
-                    break;
-                default:
-                    break;
+        Platform.runLater(() -> {
+            if (event != null) {
+                switch (event.getType()) {
+                    case GOAL:
+                        setScoreTeamA(Integer.toString(getScoreTeamA() + 1));
+                        //TODO: set right team!
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        events.add(event);
+            events.add(event);
+        });
     }
 
 

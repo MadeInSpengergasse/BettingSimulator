@@ -20,7 +20,7 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        generateMatches(20);
+//        generateMatches(20);
     }
 
     @FXML
@@ -56,6 +56,7 @@ public class MainViewController {
             while(teamA.equalsIgnoreCase(teamB)){
                 teamB = TeamHelper.getRandomTeamName();
             }
+            addMatch(teamA, teamB, oddsA, 100-oddsA);
 
         }
 
@@ -63,7 +64,7 @@ public class MainViewController {
     }
 
     public void addMatch(String teamA, String teamB, int oddsA, int oddsB){
-
+        //TODO: Add match!!!!
     }
 
 }
