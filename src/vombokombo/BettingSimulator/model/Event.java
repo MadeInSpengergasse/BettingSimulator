@@ -10,9 +10,9 @@ public class Event {
         GOAL, UNKNOWN
     }
 
-    private final StringProperty timeStamp;
-    private final StringProperty event;
-    private final EventType type;
+    private StringProperty timeStamp;
+    private StringProperty event;
+    private EventType type;
 
     public Event(int timeSeconds, String event, EventType type) {
         this.timeStamp = new SimpleStringProperty(TimeStamp.convert(timeSeconds));

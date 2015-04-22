@@ -50,6 +50,7 @@ public class LivetickerViewController {
     @FXML
     private void initialize() {
         System.out.println("init livetickerviewcontroller");
+        
 //        event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
 //        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
     }
