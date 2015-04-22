@@ -1,6 +1,5 @@
 package vombokombo.BettingSimulator.view;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,8 +50,8 @@ public class LivetickerViewController {
     @FXML
     private void initialize() {
         System.out.println("init livetickerviewcontroller");
-        event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
-        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
+//        event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
+//        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -130,19 +129,21 @@ public class LivetickerViewController {
         }
     */
     public void addEvent(Event event) {
-        Platform.runLater(() -> {
-            if (event != null) {
-                switch (event.getType()) {
-                    case GOAL:
-                        setScoreTeamA(Integer.toString(getScoreTeamA() + 1));
-                        //TODO: set right team!
-                        break;
-                    default:
-                        break;
-                }
+//        Platform.runLater(() -> {
+        if (event != null) {
+            switch (event.getType()) {
+                case GOAL:
+                    setScoreTeamA(Integer.toString(getScoreTeamA() + 1));
+                    //TODO: set right team!
+                    break;
+                default:
+                    break;
             }
             events.add(event);
-        });
+        }
+
+
+//        });
     }
 
 
