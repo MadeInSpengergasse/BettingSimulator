@@ -5,7 +5,7 @@ import java.time.Duration;
 import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
 
-import vombokombo.BettingSimulator.model.Events;
+import vombokombo.BettingSimulator.util.EventHelper;
 import vombokombo.BettingSimulator.util.TimeStamp;
 import vombokombo.BettingSimulator.view.LivetickerViewController;
 import javafx.scene.control.Label;
@@ -38,8 +38,7 @@ public class Counter {
         increaseSecond();
         timeLabel.setText(TimeStamp.convert(timeSeconds));
         if (timeSeconds % 60 == 0) {
-            controller.addEvent(Events.generateEvent("Team A", "Team B", getTimeSeconds()));
-
+            controller.addEvent(EventHelper.generateEvent("Team A", "Team B", getTimeSeconds()));
         }
     }
 
