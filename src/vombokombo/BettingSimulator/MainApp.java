@@ -59,7 +59,7 @@ public class MainApp extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
 
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
@@ -80,7 +80,7 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/LivetickerView.fxml"));
-            AnchorPane livetickerView = (AnchorPane) loader.load();
+            AnchorPane livetickerView = loader.load();
 
             Stage livetickerStage = new Stage();
             livetickerStage.setTitle("Liveticker");
@@ -106,7 +106,7 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/MainView.fxml"));
-            AnchorPane mainView = (AnchorPane) loader.load();
+            AnchorPane mainView = loader.load();
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(mainView);
