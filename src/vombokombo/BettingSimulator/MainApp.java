@@ -201,6 +201,6 @@ public class MainApp extends Application {
     public void setMoney(float money) {
         this.money = money;
         DecimalFormat df = new DecimalFormat("0.00");
-        moneyLabel.setText(df.format(money) + " €");
+        moneyLabel.setText(df.format(money) + " â‚¬");
     }
 }
