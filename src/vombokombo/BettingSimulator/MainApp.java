@@ -129,7 +129,7 @@ public class MainApp extends Application {
     }
 
     public boolean loadDataFromFile(File file) {
-
+        //TODO: REWRITE EVERYTHING!
         try {
             JAXBContext context = JAXBContext.newInstance(Save.class);
             Unmarshaller um = context.createUnmarshaller();
@@ -150,7 +150,7 @@ public class MainApp extends Application {
     }
 
     public boolean saveDataToFile(File file) {
-
+        //TODO: REWRITE EVERYTHING!
         try {
             JAXBContext context = JAXBContext
                     .newInstance(Save.class);
