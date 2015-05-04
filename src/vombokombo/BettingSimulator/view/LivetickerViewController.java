@@ -51,8 +51,8 @@ public class LivetickerViewController {
     private void initialize() {
         System.out.println("init livetickerviewcontroller");
 
-//        event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
-//        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
+        event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
+        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -80,7 +80,7 @@ public class LivetickerViewController {
         System.out.println("Start Button");
         if (counter == null) {
             System.out.println("Real Start");
-            counter = new Counter(time, 20, this);
+            counter = new Counter(time, 20, this, 10);
         }
     }
 
@@ -94,10 +94,12 @@ public class LivetickerViewController {
 
     @FXML
     public void forwardButton() {
-        System.out.println("Forward Button");
+        System.out.println("Forward Button, NOTHING HAPPENS!!");
+        /*
         if (counter == null) {
-            counter = new Counter(time, 1, this);
+            counter = new Counter(time, 1, this, 10);
         }
+        */
     }
 
     public void setTeamA(String text) {

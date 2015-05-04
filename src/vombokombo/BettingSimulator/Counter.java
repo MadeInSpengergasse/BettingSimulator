@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 public class Counter {
     private boolean status; // false == stopped, true == running
 
+    private int endMinutes;
+
     Timer timer;
 
     private int timeSeconds;
@@ -22,9 +24,10 @@ public class Counter {
     private LivetickerViewController controller;
 
     public Counter(Label timeLabelP, int delay,
-                   LivetickerViewController controller) {
+                   LivetickerViewController controller, int endMinutes) {
 
         this.timeLabel = timeLabelP;
+        this.endMinutes = endMinutes;
 
         timer = FxTimer.runPeriodically(Duration.ofMillis(delay),
                 () -> scheduledTask());
@@ -35,16 +38,16 @@ public class Counter {
     }
 
     public void scheduledTask() {
-        increaseSecond();
+        timeSeconds++;
         timeLabel.setText(TimeStamp.convert(timeSeconds));
-        if (timeSeconds % 60 == 0) {
+//        if (timeSeconds % 60 == 0) {
             controller.addEvent(EventHelper.generateEvent("Team A", "Team B", getTimeSeconds()));
+//        }
+        if(TimeStamp.getMinutes(timeSeconds) >= endMinutes){
+            handleEndOfMatch();
         }
     }
 
-    public void increaseSecond() {
-        timeSeconds++;
-    }
 
     public void stopResume() {
         if (!status) {
@@ -61,6 +64,10 @@ public class Counter {
 
     public int getTimeSeconds() {
         return timeSeconds;
+    }
+
+    public void handleEndOfMatch(){
+        timer.stop();
     }
 
 }
