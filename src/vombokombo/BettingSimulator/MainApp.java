@@ -1,21 +1,5 @@
 package vombokombo.BettingSimulator;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.prefs.Preferences;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import vombokombo.BettingSimulator.util.ExceptionDialog;
-import vombokombo.BettingSimulator.util.Save;
-import vombokombo.BettingSimulator.view.LivetickerViewController;
-import vombokombo.BettingSimulator.view.MainViewController;
-import vombokombo.BettingSimulator.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,6 +8,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import vombokombo.BettingSimulator.util.ExceptionDialog;
+import vombokombo.BettingSimulator.util.Save;
+import vombokombo.BettingSimulator.view.*;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.io.*;
+import java.text.DecimalFormat;
+import java.util.prefs.Preferences;
 
 
 public class MainApp extends Application {
@@ -37,9 +31,10 @@ public class MainApp extends Application {
 
     private Label moneyLabel;
 
+    private String currentFileName;
+
     @Override
     public void start(Stage primaryStage) {
-
         Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
         ExceptionDialog.showExceptionDialog(ex);
 
@@ -120,6 +115,57 @@ public class MainApp extends Application {
         }
     }
 
+    public void showEndOfMatchView(boolean won, int wonMoney) {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/EndOfMatchView.fxml"));
+            BorderPane endOfMatchView = loader.load();
+
+            Stage endOfMatchStage = new Stage();
+            endOfMatchStage.setTitle("End of match!");
+
+            endOfMatchStage.initModality(Modality.WINDOW_MODAL);
+            endOfMatchStage.initOwner(primaryStage);
+            Scene scene = new Scene(endOfMatchView);
+            endOfMatchStage.setScene(scene);
+
+            EndOfMatchViewController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setImportantThings(won, wonMoney);
+
+            endOfMatchStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showBettingView() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/BettingView.fxml"));
+            AnchorPane bettingView = loader.load();
+
+            Stage bettingViewStage = new Stage();
+            bettingViewStage.setTitle("End of match!");
+
+            bettingViewStage.initModality(Modality.WINDOW_MODAL);
+            bettingViewStage.initOwner(primaryStage);
+            Scene scene = new Scene(bettingView);
+            bettingViewStage.setScene(scene);
+
+            BettingViewController controller = loader.getController();
+            controller.setMainApp(this);
+
+            bettingViewStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -129,6 +175,15 @@ public class MainApp extends Application {
     }
 
     public boolean loadDataFromFile(File file) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(getFilePath()));
+            String line;
+            while((line = reader.readLine()) != null){
+
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
         //TODO: REWRITE EVERYTHING!
         try {
             JAXBContext context = JAXBContext.newInstance(Save.class);
@@ -152,6 +207,12 @@ public class MainApp extends Application {
     public boolean saveDataToFile(File file) {
         //TODO: REWRITE EVERYTHING!
         try {
+            PrintStream ps = new PrintStream(getFilePath());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        /*
+        try {
             JAXBContext context = JAXBContext
                     .newInstance(Save.class);
             Marshaller m = context.createMarshaller();
@@ -171,6 +232,8 @@ public class MainApp extends Application {
         }
 
 
+        return false;
+        */
         return false;
     }
 

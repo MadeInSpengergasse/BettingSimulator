@@ -2,6 +2,8 @@ package vombokombo.BettingSimulator;
 
 import java.time.Duration;
 
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
 
@@ -9,6 +11,8 @@ import vombokombo.BettingSimulator.util.EventHelper;
 import vombokombo.BettingSimulator.util.TimeStamp;
 import vombokombo.BettingSimulator.view.LivetickerViewController;
 import javafx.scene.control.Label;
+
+import javax.swing.*;
 
 public class Counter {
     private boolean status; // false == stopped, true == running
@@ -23,11 +27,14 @@ public class Counter {
 
     private LivetickerViewController controller;
 
+    private MainApp mainapp;
+
     public Counter(Label timeLabelP, int delay,
-                   LivetickerViewController controller, int endMinutes) {
+                   LivetickerViewController controller, int endMinutes, MainApp mainapp) {
 
         this.timeLabel = timeLabelP;
         this.endMinutes = endMinutes;
+        this.mainapp = mainapp;
 
         timer = FxTimer.runPeriodically(Duration.ofMillis(delay),
                 () -> scheduledTask());
@@ -68,6 +75,10 @@ public class Counter {
 
     public void handleEndOfMatch(){
         timer.stop();
+        ((Stage) controller.getTimeLabel().getScene().getWindow()).close();
+        Platform.runLater(() -> {
+            mainapp.showEndOfMatchView(true, 100);
+        });
     }
 
 }

@@ -1,8 +1,6 @@
 package vombokombo.BettingSimulator.util;
 
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "save")
 public class Save {
 
     private float money;

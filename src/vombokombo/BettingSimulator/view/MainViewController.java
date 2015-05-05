@@ -38,6 +38,11 @@ public class MainViewController {
         mainapp.showLiveticker();
     }
 
+    @FXML
+    private void openEndOfMatch(){
+        mainapp.showEndOfMatchView(true, 100);
+    }
+
     public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
     }
