@@ -1,8 +1,8 @@
 package vombokombo.BettingSimulator.model;
 
-import vombokombo.BettingSimulator.util.TimeStamp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import vombokombo.BettingSimulator.util.TimeStamp;
 
 public class Event {
 

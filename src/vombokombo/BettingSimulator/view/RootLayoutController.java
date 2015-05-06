@@ -1,12 +1,9 @@
 package vombokombo.BettingSimulator.view;
 
-import java.io.File;
-import java.util.Properties;
-
-import vombokombo.BettingSimulator.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.util.PropertiesHelper;
 
 public class RootLayoutController {

@@ -1,18 +1,15 @@
 package vombokombo.BettingSimulator;
 
-import java.time.Duration;
-
 import javafx.application.Platform;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.reactfx.util.Timer;
 import org.reactfx.util.FxTimer;
-
+import org.reactfx.util.Timer;
 import vombokombo.BettingSimulator.util.EventHelper;
 import vombokombo.BettingSimulator.util.TimeStamp;
 import vombokombo.BettingSimulator.view.LivetickerViewController;
-import javafx.scene.control.Label;
 
-import javax.swing.*;
+import java.time.Duration;
 
 public class Counter {
     private boolean status; // false == stopped, true == running
@@ -48,9 +45,9 @@ public class Counter {
         timeSeconds++;
         timeLabel.setText(TimeStamp.convert(timeSeconds));
 //        if (timeSeconds % 60 == 0) {
-            controller.addEvent(EventHelper.generateEvent("Team A", "Team B", getTimeSeconds()));
+        controller.addEvent(EventHelper.generateEvent("Team A", "Team B", getTimeSeconds()));
 //        }
-        if(TimeStamp.getMinutes(timeSeconds) >= endMinutes){
+        if (TimeStamp.getMinutes(timeSeconds) >= endMinutes) {
             handleEndOfMatch();
         }
     }
@@ -73,7 +70,7 @@ public class Counter {
         return timeSeconds;
     }
 
-    public void handleEndOfMatch(){
+    public void handleEndOfMatch() {
         timer.stop();
         ((Stage) controller.getTimeLabel().getScene().getWindow()).close();
         Platform.runLater(() -> {

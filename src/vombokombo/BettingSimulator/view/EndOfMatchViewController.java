@@ -25,7 +25,7 @@ public class EndOfMatchViewController {
     @FXML
     private TextField balance;
 
-    public void setMainApp(MainApp mainapp){
+    public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
     }
 
@@ -36,7 +36,7 @@ public class EndOfMatchViewController {
     }
 
     @FXML
-    public void continueButton(){
+    public void continueButton() {
         ((Stage) wonLost.getScene().getWindow()).close();
     }
 }

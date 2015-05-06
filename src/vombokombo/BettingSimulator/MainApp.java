@@ -3,24 +3,17 @@ package vombokombo.BettingSimulator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import vombokombo.BettingSimulator.util.ExceptionDialog;
-import vombokombo.BettingSimulator.util.PropertiesHelper;
-import vombokombo.BettingSimulator.util.Save;
 import vombokombo.BettingSimulator.view.*;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.*;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Properties;
-import java.util.prefs.Preferences;
 
 
 public class MainApp extends Application {
@@ -33,16 +26,16 @@ public class MainApp extends Application {
     private MainViewController mainViewController;
 
 
-    private Label moneyLabel;
-    private Label matchesWonLabel;
-    private Label matchesLostLabel;
+    private Text moneyText;
+    private Text matchesWonText;
+    private Text matchesLostText;
 
     public static String currentFileName = null;
     private static float money;
     private static int matchesWon;
     private static int matchesLost;
 
-    public static Properties getProperties(){
+    public static Properties getProperties() {
         Properties props = new Properties();
         props.put("money", money);
         props.put("matchesWon", matchesWon);
@@ -52,8 +45,8 @@ public class MainApp extends Application {
 
     public void setSave(float money, int matchesWon, int matchesLost) {
         setMoney(money);
-        this.matchesWon = matchesWon;
-        this.matchesLost = matchesLost;
+        setMatchesWon(matchesWon);
+        setMatchesLost(matchesLost);
     }
 
     @Override
@@ -137,9 +130,9 @@ public class MainApp extends Application {
 
             mainViewController = loader.getController();
             mainViewController.setMainApp(this);
-            moneyLabel = mainViewController.getMoneyLabel();
-            matchesWonLabel = mainViewController.getMatchesWonLabel();
-            matchesLostLabel = mainViewController.getMatchesLostLabel();
+            moneyText = mainViewController.getMoneyText();
+            matchesWonText = mainViewController.getMatchesWonText();
+            matchesLostText = mainViewController.getMatchesLostText();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -206,7 +199,6 @@ public class MainApp extends Application {
     }
 
 
-
     public float getMoney() {
         return money;
     }
@@ -214,16 +206,16 @@ public class MainApp extends Application {
     public void setMoney(float money) {
         this.money = money;
         DecimalFormat df = new DecimalFormat("0.00");
-        moneyLabel.setText(df.format(money) + " €");
+        moneyText.setText(df.format(money) + " €");
     }
 
-    public void setMatchesWon(int matchesWon){
+    public void setMatchesWon(int matchesWon) {
         this.matchesWon = matchesWon;
-
+        matchesWonText.setText(matchesWon + "");
     }
 
-    public void setMatchesLost(int matchesLost){
+    public void setMatchesLost(int matchesLost) {
         this.matchesLost = matchesLost;
-
+        matchesLostText.setText(matchesLost + "");
     }
 }

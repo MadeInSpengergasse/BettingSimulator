@@ -1,7 +1,8 @@
 package vombokombo.BettingSimulator.util;
 
-import java.io.*;
-import java.net.URISyntaxException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Random;
 
 /**
@@ -32,7 +33,7 @@ public class TeamHelper {
                 reader.readLine();
             }
             return reader.readLine();
-        } catch(Exception e){
+        } catch (Exception e) {
 
             return "ERROR";
         }

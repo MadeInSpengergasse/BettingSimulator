@@ -1,9 +1,9 @@
 package vombokombo.BettingSimulator.util;
 
-import java.util.Random;
-
 import vombokombo.BettingSimulator.model.Event;
 import vombokombo.BettingSimulator.model.Event.EventType;
+
+import java.util.Random;
 
 public class EventHelper {
 

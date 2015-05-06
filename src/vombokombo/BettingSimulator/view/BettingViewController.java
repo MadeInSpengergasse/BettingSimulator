@@ -27,27 +27,27 @@ public class BettingViewController {
     @FXML
     private TextField amount;
 
-    public void setMainApp(MainApp mainapp){
+    public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
     }
 
     @FXML
-    private void betOnA(){
+    private void betOnA() {
 
     }
 
     @FXML
-    private void betOnB(){
+    private void betOnB() {
 
     }
 
     @FXML
-    private void increase(){
+    private void increase() {
 
     }
 
     @FXML
-    private void decrease(){
+    private void decrease() {
 
     }
 

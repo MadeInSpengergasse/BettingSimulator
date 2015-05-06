@@ -149,7 +149,7 @@ public class LivetickerViewController {
 //        });
     }
 
-    public Label getTimeLabel(){
+    public Label getTimeLabel() {
         return time;
     }
 

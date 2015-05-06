@@ -1,8 +1,11 @@
 package vombokombo.BettingSimulator.view;
 
-import vombokombo.BettingSimulator.MainApp;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.text.Text;
+import vombokombo.BettingSimulator.MainApp;
+import vombokombo.BettingSimulator.model.Match;
 import vombokombo.BettingSimulator.util.TeamHelper;
 
 import java.util.Random;
@@ -10,12 +13,28 @@ import java.util.Random;
 public class MainViewController {
 
     @FXML
-    private Label moneyLabel;
+    private Text moneyText;
 
     @FXML
-    private Label matchesWonLabel;
+    private Text matchesWonText;
+
     @FXML
-    private Label matchesLostLabel;
+    private Text matchesLostText;
+
+    @FXML
+    private TableView<Match> matchesTable;
+
+    @FXML
+    private TableColumn<Match, String> oddsA;
+
+    @FXML
+    private TableColumn<Match, String> oddsB;
+
+    @FXML
+    private TableColumn<Match, String> teamA;
+
+    @FXML
+    private TableColumn<Match, String> teamB;
 
 
 
@@ -28,6 +47,9 @@ public class MainViewController {
     @FXML
     private void initialize() {
 //        generateMatches(20);
+        //TODO: CHANGE AND INIT!!!
+//        oddsA.setCellValueFactory(cellData -> cellData.getValue().get);
+//        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
     }
 
     @FXML
@@ -46,7 +68,7 @@ public class MainViewController {
     }
 
     @FXML
-    private void openEndOfMatch(){
+    private void openEndOfMatch() {
         mainapp.showEndOfMatchView(true, 100);
     }
 
@@ -54,36 +76,32 @@ public class MainViewController {
         this.mainapp = mainapp;
     }
 
-
-    public Label getMoneyLabel() {
-        return moneyLabel;
+    public Text getMoneyText() {
+        return moneyText;
     }
 
-    public Label getMatchesWonLabel() {
-        return matchesWonLabel;
+    public Text getMatchesWonText() {
+        return matchesWonText;
     }
 
-    public Label getMatchesLostLabel() {
-        return matchesLostLabel;
+    public Text getMatchesLostText() {
+        return matchesLostText;
     }
 
-    public void generateMatches(int count){
+    public void generateMatches(int count) {
         Random random = new Random();
-        for(int i=0; i<count; i++){
-            int oddsA = random.nextInt(80)+10;
+        for (int i = 0; i < count; i++) {
+            int oddsA = random.nextInt(80) + 10;
             String teamA = TeamHelper.getRandomTeamName();
             String teamB = TeamHelper.getRandomTeamName();
-            while(teamA.equalsIgnoreCase(teamB)){
+            while (teamA.equalsIgnoreCase(teamB)) {
                 teamB = TeamHelper.getRandomTeamName();
             }
-            addMatch(teamA, teamB, oddsA, 100-oddsA);
-
+            addMatch(teamA, teamB, oddsA, 100 - oddsA);
         }
-
-
     }
 
-    public void addMatch(String teamA, String teamB, int oddsA, int oddsB){
+    public void addMatch(String teamA, String teamB, int oddsA, int oddsB) {
         //TODO: Add match!!
     }
 

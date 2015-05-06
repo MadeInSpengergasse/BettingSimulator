@@ -18,20 +18,18 @@ public class TimeStamp {
         return nf.format(getHours(totalSeconds)) + ":" + nf.format(getMinutes(totalSeconds)) + ":" + nf.format(getSeconds(totalSeconds));
     }
 
-    public static int getSeconds(int totalSeconds){
+    public static int getSeconds(int totalSeconds) {
         return totalSeconds % SECONDS_IN_A_MINUTE;
     }
 
-    public static int getMinutes(int totalSeconds){
+    public static int getMinutes(int totalSeconds) {
         int totalMinutes = totalSeconds / SECONDS_IN_A_MINUTE;
         return totalMinutes % MINUTES_IN_AN_HOUR;
     }
 
-    public static int getHours(int totalSeconds){
+    public static int getHours(int totalSeconds) {
         return getMinutes(totalSeconds) / MINUTES_IN_AN_HOUR;
     }
-
-
 
 
 }
