@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="vombokombo.BettingSimulator.view.LivetickerViewController">
     <children>
         <Label layoutX="148.0" layoutY="10.0" text="Liveticker" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
@@ -56,7 +54,6 @@
                             <children>
                                 <Button mnemonicParsing="false" onAction="#startButton" text="Start"/>
                                 <Button mnemonicParsing="false" onAction="#stop_resumeButton" text="Stop/Resume"/>
-                                <Button mnemonicParsing="false" onAction="#forwardButton" text="Forward"/>
                                 <Button layoutX="8.0" layoutY="214.0" mnemonicParsing="false" onAction="#skipButton"
                                         text="Skip"/>
                             </children>

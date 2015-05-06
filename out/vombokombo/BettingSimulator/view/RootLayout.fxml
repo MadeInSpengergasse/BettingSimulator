@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
-
-<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.RootLayoutController">
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.RootLayoutController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -14,35 +12,39 @@
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#newMenu" text="New">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
                         <MenuItem mnemonicParsing="false" onAction="#openMenu" text="Open">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
                         <MenuItem mnemonicParsing="false" onAction="#saveMenu" text="Save">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
                         <MenuItem mnemonicParsing="false" onAction="#saveAsMenu" text="Save As">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN"
+                                                    shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#closeMenu" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeMenu" text="Close"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Preferences" />
+                        <MenuItem mnemonicParsing="false" text="Preferences"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#aboutMenu" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#aboutMenu" text="About"/>
                     </items>
                 </Menu>
             </menus>
