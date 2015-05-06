@@ -28,11 +28,13 @@ public class MainApp extends Application {
 
     private MainViewController mainViewController;
 
-    private float money;
 
     private Label moneyLabel;
 
-    private String currentFileName;
+    public static String currentFileName = null;
+    public static float money;
+    public static int matchesWon;
+    public static int matchesLost;
 
     @Override
     public void start(Stage primaryStage) {

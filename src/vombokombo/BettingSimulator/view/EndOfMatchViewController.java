@@ -2,6 +2,7 @@ package vombokombo.BettingSimulator.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vombokombo.BettingSimulator.MainApp;
 
@@ -16,13 +17,13 @@ public class EndOfMatchViewController {
     private int wonMoney;
 
     @FXML
-    private Label wonLost;
+    private TextField wonLost;
 
     @FXML
-    private Label testWonLost;
+    private Label textWonLost;
 
     @FXML
-    private Label balance;
+    private TextField balance;
 
     public void setMainApp(MainApp mainapp){
         this.mainapp = mainapp;
