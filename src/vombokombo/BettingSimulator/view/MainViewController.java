@@ -1,13 +1,17 @@
 package vombokombo.BettingSimulator.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import vombokombo.BettingSimulator.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import vombokombo.BettingSimulator.model.Match;
 import vombokombo.BettingSimulator.util.TeamHelper;
 
 import java.util.Random;
 
 public class MainViewController {
+    private final ObservableList<Match> data=FXCollections.observableArrayList();
 
     @FXML
     private Label moneyLabel;
@@ -66,6 +70,10 @@ public class MainViewController {
     public Label getMatchesLostLabel() {
         return matchesLostLabel;
     }
+    @FXML
+    public ObservableList <Match> getData(){
+        return data;
+    }
 
     public void generateMatches(int count){
         Random random = new Random();
@@ -84,6 +92,7 @@ public class MainViewController {
     }
 
     public void addMatch(String teamA, String teamB, int oddsA, int oddsB){
+      data.add(new Match(teamA,teamB,oddsA,oddsB));
         //TODO: Add match!!
     }
 
