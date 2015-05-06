@@ -25,6 +25,8 @@ import java.util.prefs.Preferences;
 
 public class MainApp extends Application {
 
+    public static MainApp mainapp;
+
     public static Stage primaryStage;
     private BorderPane rootLayout;
 
@@ -32,6 +34,8 @@ public class MainApp extends Application {
 
 
     private Label moneyLabel;
+    private Label matchesWonLabel;
+    private Label matchesLostLabel;
 
     public static String currentFileName = null;
     private static float money;
@@ -46,12 +50,20 @@ public class MainApp extends Application {
         return props;
     }
 
+    public void setSave(float money, int matchesWon, int matchesLost) {
+        setMoney(money);
+        this.matchesWon = matchesWon;
+        this.matchesLost = matchesLost;
+    }
+
     @Override
     public void start(Stage primaryStage) {
 //        Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
 //        ExceptionDialog.showExceptionDialog(ex);
 
-        PropertiesHelper.saveAs();
+//        PropertiesHelper.open();
+
+        this.mainapp = this;
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Main");
@@ -126,6 +138,8 @@ public class MainApp extends Application {
             mainViewController = loader.getController();
             mainViewController.setMainApp(this);
             moneyLabel = mainViewController.getMoneyLabel();
+            matchesWonLabel = mainViewController.getMatchesWonLabel();
+            matchesLostLabel = mainViewController.getMatchesLostLabel();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -191,88 +205,7 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public boolean loadDataFromFile(File file) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(getFilePath()));
-            String line;
-            while((line = reader.readLine()) != null){
 
-            }
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        //TODO: REWRITE EVERYTHING!
-        try {
-            JAXBContext context = JAXBContext.newInstance(Save.class);
-            Unmarshaller um = context.createUnmarshaller();
-
-            Save save = (Save) um.unmarshal(file);
-            setMoney(save.getMoney());
-            setFilePath(file);
-
-        } catch (JAXBException e) {
-            ExceptionDialog.showExceptionDialog(e);
-        }
-
-
-        //TODO: Get everything from the file
-
-
-        return false;
-    }
-
-    public boolean saveDataToFile(File file) {
-        //TODO: REWRITE EVERYTHING!
-        try {
-            PrintStream ps = new PrintStream(getFilePath());
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        /*
-        try {
-            JAXBContext context = JAXBContext
-                    .newInstance(Save.class);
-            Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-            // Wrapping our person data.
-            Save save = new Save();
-            save.setMoney(money);
-
-            // Marshalling and saving XML to the file.
-            m.marshal(save, file);
-
-            // Save the file path to the registry.
-            setFilePath(file);
-        } catch (Exception e) { // catches ANY exception
-            ExceptionDialog.showExceptionDialog(e);
-        }
-
-
-        return false;
-        */
-        return false;
-    }
-
-    public void setFilePath(File file) {
-        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
-
-        if (file != null) {
-            prefs.put("filePath", file.getPath());
-        } else {
-            prefs.remove("filePath");
-        }
-    }
-
-    public File getFilePath() {
-        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
-        String filePath = prefs.get("filePath", null);
-        if (filePath != null) {
-            return new File(filePath);
-        } else {
-            return null;
-        }
-    }
 
     public float getMoney() {
         return money;
@@ -282,5 +215,15 @@ public class MainApp extends Application {
         this.money = money;
         DecimalFormat df = new DecimalFormat("0.00");
         moneyLabel.setText(df.format(money) + " €");
+    }
+
+    public void setMatchesWon(int matchesWon){
+        this.matchesWon = matchesWon;
+
+    }
+
+    public void setMatchesLost(int matchesLost){
+        this.matchesLost = matchesLost;
+
     }
 }
