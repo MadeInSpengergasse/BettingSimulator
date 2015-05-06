@@ -8,34 +8,14 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.BettingViewController">
     <children>
         <Label layoutX="33.0" layoutY="224.0" prefHeight="17.0" prefWidth="62.0" text="Amount:" />
-        <Button layoutX="33.0" layoutY="300.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="62.0" text="X" />
-        <Button layoutX="179.0" layoutY="300.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="62.0" text="Y" />
+        <Button layoutX="33.0" layoutY="300.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="62.0" text="A" />
+        <Button layoutX="179.0" layoutY="300.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="62.0" text="B" />
         <Button layoutX="179.0" layoutY="241.0" mnemonicParsing="false" text="+" />
-        <Button layoutX="212.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="-" />
+        <Button layoutX="212.0" layoutY="241.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="29.0" text="-" />
         <TextField layoutX="33.0" layoutY="241.0" prefHeight="25.0" prefWidth="129.0" />
         <Label layoutX="126.0" layoutY="46.0" text="vs">
             <font>
                 <Font size="22.0" />
-            </font>
-        </Label>
-        <Label layoutX="44.0" layoutY="28.0" prefHeight="49.0" prefWidth="62.0" text="X">
-            <font>
-                <Font size="41.0" />
-            </font>
-        </Label>
-        <Label layoutX="197.0" layoutY="28.0" prefHeight="51.0" prefWidth="50.0" text="Y">
-            <font>
-                <Font size="41.0" />
-            </font>
-        </Label>
-        <Label layoutX="56.0" layoutY="113.0" prefHeight="32.0" prefWidth="44.0" text="49%">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <Label layoutX="182.0" layoutY="116.0" text="51%">
-            <font>
-                <Font size="16.0" />
             </font>
         </Label>
         <Label layoutX="126.0" layoutY="115.0" text="vs">
@@ -43,7 +23,21 @@
                 <Font size="17.0" />
             </font>
         </Label>
-        <Label layoutX="26.0" layoutY="359.0" text="Bet on Team X" />
-        <Label layoutX="174.0" layoutY="359.0" text="Bet on Team Y" />
+        <Label layoutX="26.0" layoutY="359.0" text="Bet on" />
+        <Label layoutX="174.0" layoutY="359.0" text="Bet on" />
+      <TextField editable="false" layoutX="9.0" layoutY="40.0" opacity="0.0" prefHeight="33.0" prefWidth="115.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField editable="false" layoutX="153.0" layoutY="40.0" opacity="0.0" prefHeight="33.0" prefWidth="115.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="29.0" layoutY="115.0" opacity="0.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextField layoutX="178.0" layoutY="116.0" opacity="0.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextField editable="false" layoutX="72.0" layoutY="355.0" opacity="0.0" prefHeight="21.0" prefWidth="62.0" />
+      <TextField editable="false" layoutX="220.0" layoutY="355.0" opacity="0.0" prefHeight="21.0" prefWidth="62.0" />
     </children>
 </Pane>

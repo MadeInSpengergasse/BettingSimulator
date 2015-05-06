@@ -14,11 +14,11 @@ public class PropertiesHelper {
 
     public static final String ORIGINAL_FILENAME = "BettingSimulator.db";
 
-    public static void saveToFile(Properties props, String filename){
+    public static void saveToFile(File file){
         try {
-            File file = new File(filename);
+
             OutputStream os = new FileOutputStream(file);
-            props.store(os, "This is a comment ;)");
+            MainApp.getProperties().store(os, "This is a comment ;)");
             //TODO: SAVE
         } catch (Exception e){
             e.printStackTrace();
@@ -54,9 +54,21 @@ public class PropertiesHelper {
     public static void saveAs(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a location to save!");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SAVE files (*.save)", "*.save");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Save files (*.save)", "*.save");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.showSaveDialog(new Stage());
+    }
+
+    public static void open(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose the location to load from!");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Save files (*.save)", "*.save");
         fileChooser.getExtensionFilters().add(extFilter);
         fileChooser.showOpenDialog(new Stage());
+    }
+
+    public static void newM(){
+        MainApp.mainapp.setSave(1000, 0, 0);
     }
 
     public static void main(String[] args){

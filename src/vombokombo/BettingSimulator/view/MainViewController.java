@@ -12,6 +12,13 @@ public class MainViewController {
     @FXML
     private Label moneyLabel;
 
+    @FXML
+    private Label matchesWonLabel;
+    @FXML
+    private Label matchesLostLabel;
+
+
+
     private MainApp mainapp;
 
     public MainViewController() {
@@ -50,6 +57,14 @@ public class MainViewController {
 
     public Label getMoneyLabel() {
         return moneyLabel;
+    }
+
+    public Label getMatchesWonLabel() {
+        return matchesWonLabel;
+    }
+
+    public Label getMatchesLostLabel() {
+        return matchesLostLabel;
     }
 
     public void generateMatches(int count){
