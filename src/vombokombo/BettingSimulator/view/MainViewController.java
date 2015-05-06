@@ -69,7 +69,7 @@ public class MainViewController {
     }
 
     public void addMatch(String teamA, String teamB, int oddsA, int oddsB){
-        //TODO: Add match!!!!
+        //TODO: Add match!!
     }
 
 }

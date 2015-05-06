@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="MatchesLost" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.MainViewController">
+<AnchorPane fx:id="MatchesLost" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.MainViewController">
     <children>
         <Button layoutX="1108.0" layoutY="749.0" mnemonicParsing="false" onAction="#closeButton" text="Close" />
         <Button layoutX="987.0" layoutY="749.0" mnemonicParsing="false" onAction="#openLiveticker" prefHeight="25.0" prefWidth="71.0" text="Ticker" />
@@ -15,7 +15,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label layoutX="943.0" layoutY="23.0" text="Balance:">
+        <Label layoutX="943.0" layoutY="23.0" text="Balance:" AnchorPane.rightAnchor="250.0">
             <font>
                 <Font size="18.0" />
             </font>
@@ -35,12 +35,12 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-        <Text layoutX="896.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches Won:">
+        <Text layoutX="896.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches Won:" AnchorPane.rightAnchor="250.0">
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text layoutX="899.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches Lost:">
+        <Text layoutX="899.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches Lost:" AnchorPane.rightAnchor="250.0">
             <font>
                 <Font size="18.0" />
             </font>
