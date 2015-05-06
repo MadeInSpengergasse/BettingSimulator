@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -35,11 +36,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
-        ExceptionDialog.showExceptionDialog(ex);
+//        Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
+//        ExceptionDialog.showExceptionDialog(ex);
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Main");
+        this.primaryStage.getIcons().add(new Image("icon.png"));
 
         initRootLayout();
 
@@ -61,6 +63,7 @@ public class MainApp extends Application {
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
+
             primaryStage.setScene(scene);
             primaryStage.show();
 

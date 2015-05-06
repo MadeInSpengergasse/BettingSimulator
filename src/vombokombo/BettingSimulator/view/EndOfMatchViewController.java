@@ -18,6 +18,12 @@ public class EndOfMatchViewController {
     @FXML
     private Label wonLost;
 
+    @FXML
+    private Label testWonLost;
+
+    @FXML
+    private Label balance;
+
     public void setMainApp(MainApp mainapp){
         this.mainapp = mainapp;
     }
