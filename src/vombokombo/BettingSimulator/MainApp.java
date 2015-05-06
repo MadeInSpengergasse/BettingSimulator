@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import vombokombo.BettingSimulator.util.ExceptionDialog;
+import vombokombo.BettingSimulator.util.PropertiesHelper;
 import vombokombo.BettingSimulator.util.Save;
 import vombokombo.BettingSimulator.view.*;
 
@@ -18,12 +19,13 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
 import java.text.DecimalFormat;
+import java.util.Properties;
 import java.util.prefs.Preferences;
 
 
 public class MainApp extends Application {
 
-    private Stage primaryStage;
+    public static Stage primaryStage;
     private BorderPane rootLayout;
 
     private MainViewController mainViewController;
@@ -32,14 +34,24 @@ public class MainApp extends Application {
     private Label moneyLabel;
 
     public static String currentFileName = null;
-    public static float money;
-    public static int matchesWon;
-    public static int matchesLost;
+    private static float money;
+    private static int matchesWon;
+    private static int matchesLost;
+
+    public static Properties getProperties(){
+        Properties props = new Properties();
+        props.put("money", money);
+        props.put("matchesWon", matchesWon);
+        props.put("matchesLost", matchesLost);
+        return props;
+    }
 
     @Override
     public void start(Stage primaryStage) {
 //        Exception ex = new FileNotFoundException("File xyz.txt could not be found!");
 //        ExceptionDialog.showExceptionDialog(ex);
+
+        PropertiesHelper.saveAs();
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Main");

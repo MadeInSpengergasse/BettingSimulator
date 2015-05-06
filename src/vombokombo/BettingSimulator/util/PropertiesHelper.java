@@ -1,5 +1,7 @@
 package vombokombo.BettingSimulator.util;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import vombokombo.BettingSimulator.MainApp;
 
 import java.io.*;
@@ -45,8 +47,20 @@ public class PropertiesHelper {
     }
 
     public static void save(){
-        Properties props = new Properties();
-        props.put("money", "");
+
+
+    }
+
+    public static void saveAs(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select a location to save!");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SAVE files (*.save)", "*.save");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.showOpenDialog(new Stage());
+    }
+
+    public static void main(String[] args){
+        saveAs();
     }
 
 }

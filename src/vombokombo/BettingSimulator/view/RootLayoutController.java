@@ -35,7 +35,6 @@ public class RootLayoutController {
         alert.setTitle("About: Betting Simulator");
         alert.setHeaderText("Programming, Design & Idea");
         alert.setContentText("   Faltl Philipp\n   Weber Lukas\n   Weiss Luca");
-
         alert.showAndWait();
 
     }
