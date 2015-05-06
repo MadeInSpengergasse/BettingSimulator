@@ -44,4 +44,9 @@ public class PropertiesHelper {
         return props;
     }
 
+    public static void save(){
+        Properties props = new Properties();
+        props.put("money", "");
+    }
+
 }
