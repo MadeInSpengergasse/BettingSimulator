@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -12,16 +13,19 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <TextField editable="false" layoutX="75.0" layoutY="53.0" prefHeight="40.0" prefWidth="150.0">
+      <TextField fx:id="textWonLost" editable="false" layoutX="75.0" layoutY="53.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.0" prefHeight="40.0" prefWidth="150.0">
          <font>
             <Font size="30.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </TextField>
       <Text layoutX="15.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money change:">
          <font>
             <Font size="20.0" />
          </font></Text>
-      <TextField fx:id="wonLost" editable="false" layoutX="175.0" layoutY="149.0" prefHeight="26.0" prefWidth="118.0">
+      <TextField fx:id="wonLost" editable="false" layoutX="175.0" layoutY="149.0" opacity="0.0" prefHeight="26.0" prefWidth="118.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -31,10 +35,11 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="balance" editable="false" layoutX="175.0" layoutY="213.0" prefHeight="26.0" prefWidth="118.0">
+      <TextField fx:id="balance" editable="false" layoutX="175.0" layoutY="213.0" opacity="0.0" prefHeight="26.0" prefWidth="118.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
+      <Button layoutX="112.0" layoutY="365.0" mnemonicParsing="false" onAction="#continueButton" text="Continue" />
    </children>
 </AnchorPane>
