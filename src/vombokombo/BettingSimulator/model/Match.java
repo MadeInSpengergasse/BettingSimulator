@@ -1,5 +1,7 @@
 package vombokombo.BettingSimulator.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vombokombo.BettingSimulator.util.TimeStamp;
@@ -10,32 +12,56 @@ import vombokombo.BettingSimulator.util.TimeStamp;
 public class Match {
 
 
-    private StringProperty timeStamp;
-    private StringProperty event;
+    private StringProperty teamA;
+    private StringProperty teamB;
+    private IntegerProperty oddsA;
+    private IntegerProperty oddsB;
 
-    public Match(int timeSeconds, String event) {
-        this.timeStamp = new SimpleStringProperty(TimeStamp.convert(timeSeconds));
-        this.event = new SimpleStringProperty(event);
+    public Match(String teamA, String teamB, int oddsA, int oddsB) {
+        this.teamA = new SimpleStringProperty(teamA);
+        this.teamB = new SimpleStringProperty(teamB);
+        this.oddsA = new SimpleIntegerProperty(oddsA);
+        this.oddsB = new SimpleIntegerProperty(oddsB);
     }
 
     public Match() {
-        this(0, "empty");
+        this("Furry Foxes", "Blue Muffins", 34, 66);
     }
 
-    public String getTimeStamp() {
-        return timeStamp.get();
+
+    public String getTeamB() {
+        return teamB.get();
     }
 
-    public String getEvent() {
-        return event.get();
+    public StringProperty teamBProperty() {
+        return teamB;
     }
 
-    public StringProperty getTimeStampProperty() {
-        return timeStamp;
+    public void setTeamB(String teamB) {
+        this.teamB.set(teamB);
     }
 
-    public StringProperty getEventProperty() {
-        return event;
+    public String getTeamA() {
+        return teamA.get();
     }
 
+    public StringProperty teamAProperty() {
+        return teamA;
+    }
+
+    public void setTeamA(String teamA) {
+        this.teamA.set(teamA);
+    }
+
+    public int getOddsA() {
+        return oddsA.get();
+    }
+
+    public IntegerProperty oddsAProperty() {
+        return oddsA;
+    }
+
+    public void setOddsA(int oddsA) {
+        this.oddsA.set(oddsA);
+    }
 }
