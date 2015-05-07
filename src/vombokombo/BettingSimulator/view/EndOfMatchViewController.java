@@ -20,7 +20,7 @@ public class EndOfMatchViewController {
     private TextField wonLost;
 
     @FXML
-    private Label textWonLost;
+    private TextField textWonLost;
 
     @FXML
     private TextField balance;

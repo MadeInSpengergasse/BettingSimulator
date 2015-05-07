@@ -37,10 +37,14 @@ public class MainApp extends Application {
 
     public static Properties getProperties() {
         Properties props = new Properties();
-        props.put("money", money);
-        props.put("matchesWon", matchesWon);
-        props.put("matchesLost", matchesLost);
+        props.put("money", money+"");
+        props.put("matchesWon", matchesWon+"");
+        props.put("matchesLost", matchesLost+"");
         return props;
+    }
+
+    public static void setProperties(Properties props){
+        mainapp.setSave(Float.parseFloat((String) props.get("money")), Integer.parseInt((String) props.get("matchesWon")), Integer.parseInt((String) props.get("matchesLost")));
     }
 
     public void setSave(float money, int matchesWon, int matchesLost) {
@@ -144,7 +148,7 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/EndOfMatchView.fxml"));
-            BorderPane endOfMatchView = loader.load();
+            AnchorPane endOfMatchView = loader.load();
 
             Stage endOfMatchStage = new Stage();
             endOfMatchStage.setTitle("End of match!");

@@ -1,5 +1,6 @@
 package vombokombo.BettingSimulator.view;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -52,7 +53,7 @@ public class MainViewController {
     private MainApp mainapp;
 
     public MainViewController() {
-
+        matches = FXCollections.observableArrayList();
     }
 
     @FXML
@@ -64,7 +65,7 @@ public class MainViewController {
 //        teamB.setCellValueFactory(cellData -> cellData.getValue().teamBProperty());
         odds.setCellValueFactory(cellData -> cellData.getValue().oddsProperty());
         teams.setCellValueFactory(cellData -> cellData.getValue().teamsProperty());
-        generateMatches(20);
+        generateMatches(40);
     }
 
     @FXML

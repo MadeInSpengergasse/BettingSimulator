@@ -28,11 +28,11 @@ public class PropertiesHelper {
         }
     }
 
-    public static Properties loadSaveFromFile(String filename) {
+    public static void loadSaveFromFile(File file) {
         Properties props = new Properties();
         InputStream is;
         try {
-            is = new FileInputStream(new File(filename));
+            is = new FileInputStream(file);
         } catch (Exception e) {
             e.printStackTrace();
             is = null;
@@ -45,8 +45,7 @@ public class PropertiesHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //TODO: LOAD
-        return props;
+        MainApp.setProperties(props);
     }
 
     public static void save() {
@@ -61,7 +60,7 @@ public class PropertiesHelper {
         fileChooser.setTitle("Select a location to save!");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Save files (*.save)", "*.save");
         fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.showSaveDialog(new Stage());
+        saveToFile(fileChooser.showSaveDialog(new Stage()));
     }
 
     public static void open() {

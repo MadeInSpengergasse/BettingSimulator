@@ -13,7 +13,7 @@ import java.util.Random;
 public class TeamHelper {
 
     public static int lineCount = -1;
-    public static final String FILENAME = "teamnames.txt";
+    public static final String FILENAME = "/teamnames.txt";
 
     public static String getRandomTeamName() {
         try {
@@ -21,13 +21,11 @@ public class TeamHelper {
             if (lineCount == -1) {
                 BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));
                 int tempCount = 0;
-                String read = reader.readLine();
-                while (read != null) {
+                while (reader.readLine() != null) {
                     tempCount++;
-                    reader.readLine();
                 }
                 lineCount = tempCount;
-
+                System.out.println(lineCount);
             }
             BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));
             int pos = new Random().nextInt(lineCount);
