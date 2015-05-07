@@ -11,6 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import vombokombo.BettingSimulator.view.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Properties;
@@ -30,7 +31,7 @@ public class MainApp extends Application {
     private Text matchesWonText;
     private Text matchesLostText;
 
-    public static String currentFileName = null;
+    public static File currentFile = null;
     private static float money;
     private static int matchesWon;
     private static int matchesLost;

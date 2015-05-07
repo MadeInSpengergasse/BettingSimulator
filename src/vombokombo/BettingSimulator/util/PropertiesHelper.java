@@ -45,14 +45,17 @@ public class PropertiesHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MainApp.currentFile = file;
         MainApp.setProperties(props);
     }
 
     public static void save() {
-        if (MainApp.currentFileName == null) {
+        if (MainApp.currentFile == null) {
             saveAs();
         }
-
+        else {
+            saveToFile(MainApp.currentFile);
+        }
     }
 
     public static void saveAs() {
@@ -68,7 +71,7 @@ public class PropertiesHelper {
         fileChooser.setTitle("Choose the location to load from!");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Save files (*.save)", "*.save");
         fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.showOpenDialog(new Stage());
+        loadSaveFromFile(fileChooser.showOpenDialog(new Stage()));
     }
 
     public static void newM() {
