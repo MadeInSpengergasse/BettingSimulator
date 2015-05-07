@@ -68,7 +68,7 @@ public class PropertiesHelper {
 
     public static void open() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose the location to load from!");
+        fileChooser.setTitle("Choose a location to load from!");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Save files (*.save)", "*.save");
         fileChooser.getExtensionFilters().add(extFilter);
         loadSaveFromFile(fileChooser.showOpenDialog(new Stage()));
