@@ -27,8 +27,12 @@ public class TimeStamp {
         return totalMinutes % MINUTES_IN_AN_HOUR;
     }
 
+    public static int getTotalMinutes(int totalSeconds) {
+        return totalSeconds / SECONDS_IN_A_MINUTE;
+    }
+
     public static int getHours(int totalSeconds) {
-        return getMinutes(totalSeconds) / MINUTES_IN_AN_HOUR;
+        return getTotalMinutes(totalSeconds) / MINUTES_IN_AN_HOUR;
     }
 
 

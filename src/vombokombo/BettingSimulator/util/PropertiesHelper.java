@@ -18,17 +18,21 @@ public class PropertiesHelper {
     public static final String ORIGINAL_FILENAME = "BettingSimulator.db";
 
     public static void saveToFile(File file) {
+        if (file == null)
+            return;
         try {
-
             OutputStream os = new FileOutputStream(file);
             MainApp.getProperties().store(os, "This is a comment ;)");
             //TODO: SAVE
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MainApp.currentFile = file;
     }
 
     public static void loadSaveFromFile(File file) {
+        if (file == null)
+            return;
         Properties props = new Properties();
         InputStream is;
         try {
@@ -52,8 +56,7 @@ public class PropertiesHelper {
     public static void save() {
         if (MainApp.currentFile == null) {
             saveAs();
-        }
-        else {
+        } else {
             saveToFile(MainApp.currentFile);
         }
     }
@@ -78,7 +81,7 @@ public class PropertiesHelper {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Do you really want to create a new save?");
-        alert.setContentText("Any unsaved changes will be discarded!");
+        alert.setContentText("Any unsaved changes will be lost!");
         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
 

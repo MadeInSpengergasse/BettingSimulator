@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40"
-            xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/8.0.40"
             fx:controller="vombokombo.BettingSimulator.view.LivetickerViewController">
     <children>
         <Label layoutX="148.0" layoutY="10.0" text="Liveticker" textAlignment="CENTER" AnchorPane.topAnchor="10.0">

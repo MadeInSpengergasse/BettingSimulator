@@ -1,10 +1,7 @@
 package vombokombo.BettingSimulator.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import vombokombo.BettingSimulator.util.TimeStamp;
 
 /**
  * Created by luca on 06.05.15.

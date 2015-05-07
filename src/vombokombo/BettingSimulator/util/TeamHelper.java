@@ -12,11 +12,12 @@ import java.util.Random;
  */
 public class TeamHelper {
 
-    public static int lineCount = -1;
     public static final String FILENAME = "/teamnames.txt";
+    public static int lineCount = -1;
 
     public static String getRandomTeamName() {
         try {
+            //TODO: OPTIMIZE!! (maybe ArrayList)
             System.out.println(MainApp.class.getResource(FILENAME));
             if (lineCount == -1) {
                 BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));

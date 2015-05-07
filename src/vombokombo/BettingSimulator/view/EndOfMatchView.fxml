@@ -5,8 +5,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40"
             fx:controller="vombokombo.BettingSimulator.view.EndOfMatchViewController">
     <children>
         <Text layoutX="81.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have">
@@ -14,8 +15,8 @@
                 <Font size="30.0"/>
             </font>
         </Text>
-        <TextField fx:id="textWonLost" editable="false" layoutX="75.0" layoutY="53.0" nodeOrientation="LEFT_TO_RIGHT"
-                   opacity="0.0" prefHeight="40.0" prefWidth="150.0">
+        <TextField editable="false" layoutX="75.0" layoutY="53.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.0"
+                   prefHeight="40.0" prefWidth="150.0">
             <font>
                 <Font size="30.0"/>
             </font>
@@ -28,8 +29,7 @@
                 <Font size="20.0"/>
             </font>
         </Text>
-        <TextField fx:id="wonLost" editable="false" layoutX="175.0" layoutY="149.0" opacity="0.0" prefHeight="26.0"
-                   prefWidth="118.0">
+        <TextField editable="false" layoutX="175.0" layoutY="149.0" opacity="0.0" prefHeight="26.0" prefWidth="118.0">
             <font>
                 <Font size="20.0"/>
             </font>
@@ -39,12 +39,14 @@
                 <Font size="20.0"/>
             </font>
         </Text>
-        <TextField fx:id="balance" editable="false" layoutX="175.0" layoutY="213.0" opacity="0.0" prefHeight="26.0"
-                   prefWidth="118.0">
+        <TextField editable="false" layoutX="175.0" layoutY="213.0" opacity="0.0" prefHeight="26.0" prefWidth="118.0">
             <font>
                 <Font size="20.0"/>
             </font>
         </TextField>
         <Button layoutX="112.0" layoutY="365.0" mnemonicParsing="false" onAction="#continueButton" text="Continue"/>
+        <Text fx:id="textWonLost" layoutX="139.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
+        <Text fx:id="wonLost" layoutX="214.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
+        <Text fx:id="balance" layoutX="214.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
     </children>
 </AnchorPane>

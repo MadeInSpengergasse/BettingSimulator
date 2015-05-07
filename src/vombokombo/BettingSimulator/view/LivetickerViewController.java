@@ -8,10 +8,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import vombokombo.BettingSimulator.Counter;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Event;
 import vombokombo.BettingSimulator.model.Event.EventType;
+import vombokombo.BettingSimulator.util.Counter;
 
 public class LivetickerViewController {
 
@@ -80,7 +80,7 @@ public class LivetickerViewController {
         System.out.println("Start Button");
         if (counter == null) {
             System.out.println("Real Start");
-            counter = new Counter(time, 20, this, 5, mainApp);
+            counter = new Counter(time, 1, this, 90, mainApp);
         }
     }
 
@@ -110,20 +110,20 @@ public class LivetickerViewController {
         teamB.setText(text);
     }
 
-    public void setScoreTeamA(String score) {
-        scoreTeamA.setText(score);
-    }
-
-    public void setScoreTeamB(String score) {
-        scoreTeamB.setText(score);
-    }
-
     public int getScoreTeamA() {
         return Integer.parseInt(scoreTeamA.getText());
     }
 
+    public void setScoreTeamA(String score) {
+        scoreTeamA.setText(score);
+    }
+
     public int getScoreTeamB() {
         return Integer.parseInt(scoreTeamB.getText());
+    }
+
+    public void setScoreTeamB(String score) {
+        scoreTeamB.setText(score);
     }
 
     /*

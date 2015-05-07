@@ -5,9 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.text.Text;
 import vombokombo.BettingSimulator.MainApp;
-import vombokombo.BettingSimulator.model.Event;
 import vombokombo.BettingSimulator.model.Match;
 import vombokombo.BettingSimulator.util.TeamHelper;
 
@@ -27,19 +27,19 @@ public class MainViewController {
     @FXML
     private TableView<Match> matchesTable;
 
-  /*
-    @FXML
-    private TableColumn<Match, Number> oddsA;
+    /*
+      @FXML
+      private TableColumn<Match, Number> oddsA;
 
-    @FXML
-    private TableColumn<Match, Number> oddsB;
+      @FXML
+      private TableColumn<Match, Number> oddsB;
 
-    @FXML
-    private TableColumn<Match, String> teamA;
+      @FXML
+      private TableColumn<Match, String> teamA;
 
-    @FXML
-    private TableColumn<Match, String> teamB;
-*/
+      @FXML
+      private TableColumn<Match, String> teamB;
+  */
     @FXML
     private TableColumn<Match, String> odds;
 
@@ -47,7 +47,6 @@ public class MainViewController {
     private TableColumn<Match, String> teams;
 
     private ObservableList<Match> matches;
-
 
 
     private MainApp mainapp;
@@ -66,6 +65,15 @@ public class MainViewController {
         odds.setCellValueFactory(cellData -> cellData.getValue().oddsProperty());
         teams.setCellValueFactory(cellData -> cellData.getValue().teamsProperty());
         generateMatches(40);
+        matchesTable.setOnMouseClicked(mouseEvent -> {
+            if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+                if (mouseEvent.getClickCount() == 2) {
+//                    System.out.println("double click");
+                    mainapp.showBettingView(matchesTable.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -75,7 +83,7 @@ public class MainViewController {
 
     @FXML
     private void moneyyyy() {
-        mainapp.setMoney(mainapp.getMoney() + 100);
+        mainapp.setMoney(MainApp.getMoney() + 100);
     }
 
     @FXML
@@ -86,6 +94,11 @@ public class MainViewController {
     @FXML
     private void openEndOfMatch() {
         mainapp.showEndOfMatchView(true, 100);
+    }
+
+    @FXML
+    private void openBettingView() {
+        mainapp.showBettingView(new Match("TeamA", "TeamB", 50, 50));
     }
 
     public void setMainApp(MainApp mainapp) {
@@ -122,6 +135,10 @@ public class MainViewController {
     public void addMatch(String teamA, String teamB, int oddsA, int oddsB) {
         //TODO: Add match!!
         matches.add(new Match(teamA, teamB, oddsA, oddsB));
+    }
+
+    @FXML
+    private void click() {
 
     }
 

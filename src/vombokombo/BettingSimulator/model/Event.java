@@ -6,14 +6,9 @@ import vombokombo.BettingSimulator.util.TimeStamp;
 
 public class Event {
 
-    public enum EventType {
-        GOAL, UNKNOWN
-    }
-
     private StringProperty timeStamp;
     private StringProperty event;
     private EventType type;
-
     public Event(int timeSeconds, String event, EventType type) {
         this.timeStamp = new SimpleStringProperty(TimeStamp.convert(timeSeconds));
         this.event = new SimpleStringProperty(event);
@@ -42,5 +37,9 @@ public class Event {
 
     public EventType getType() {
         return type;
+    }
+
+    public enum EventType {
+        GOAL, UNKNOWN
     }
 }

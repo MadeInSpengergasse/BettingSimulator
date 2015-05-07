@@ -6,9 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import vombokombo.BettingSimulator.model.Match;
 import vombokombo.BettingSimulator.view.*;
 
 import java.io.File;
@@ -19,33 +21,45 @@ import java.util.Properties;
 
 public class MainApp extends Application {
 
+    public static final String EURO = "\u20AC";
+
     public static MainApp mainapp;
 
     public static Stage primaryStage;
-    private BorderPane rootLayout;
-
-    private MainViewController mainViewController;
-
-
-    private Text moneyText;
-    private Text matchesWonText;
-    private Text matchesLostText;
-
     public static File currentFile = null;
     private static float money;
     private static int matchesWon;
     private static int matchesLost;
+    private BorderPane rootLayout;
+    private MainViewController mainViewController;
+    private Text moneyText;
+    private Text matchesWonText;
+    private Text matchesLostText;
 
     public static Properties getProperties() {
         Properties props = new Properties();
-        props.put("money", money+"");
-        props.put("matchesWon", matchesWon+"");
-        props.put("matchesLost", matchesLost+"");
+        props.put("money", money + "");
+        props.put("matchesWon", matchesWon + "");
+        props.put("matchesLost", matchesLost + "");
         return props;
     }
 
-    public static void setProperties(Properties props){
+    public static void setProperties(Properties props) {
         mainapp.setSave(Float.parseFloat((String) props.get("money")), Integer.parseInt((String) props.get("matchesWon")), Integer.parseInt((String) props.get("matchesLost")));
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    public static float getMoney() {
+        return money;
+    }
+
+    public void setMoney(float money) {
+        MainApp.money = money;
+        DecimalFormat df = new DecimalFormat("0.00");
+        moneyText.setText(df.format(money) + " " + MainApp.EURO);
     }
 
     public void setSave(float money, int matchesWon, int matchesLost) {
@@ -61,11 +75,11 @@ public class MainApp extends Application {
 
 //        PropertiesHelper.open();
 
-        this.mainapp = this;
+        mainapp = this;
 
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Main");
-        this.primaryStage.getIcons().add(new Image("icon.png"));
+        MainApp.primaryStage = primaryStage;
+        MainApp.primaryStage.setTitle("Main");
+        MainApp.primaryStage.getIcons().add(new Image("icon.png"));
 
         initRootLayout();
 
@@ -96,7 +110,6 @@ public class MainApp extends Application {
         }
     }
 
-
     public void showLiveticker() {
         try {
             // Load person overview.
@@ -122,7 +135,6 @@ public class MainApp extends Application {
         }
     }
 
-
     public void showMainView() {
         try {
             // Load person overview.
@@ -138,6 +150,7 @@ public class MainApp extends Application {
             moneyText = mainViewController.getMoneyText();
             matchesWonText = mainViewController.getMatchesWonText();
             matchesLostText = mainViewController.getMatchesLostText();
+            setSave(1000, 0, 0);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -163,6 +176,7 @@ public class MainApp extends Application {
             controller.setMainApp(this);
             controller.setImportantThings(won, wonMoney);
 
+
             endOfMatchStage.showAndWait();
 
         } catch (IOException e) {
@@ -170,15 +184,15 @@ public class MainApp extends Application {
         }
     }
 
-    public void showBettingView() {
+    public void showBettingView(Match match) {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/BettingView.fxml"));
-            AnchorPane bettingView = loader.load();
+            Pane bettingView = loader.load();
 
             Stage bettingViewStage = new Stage();
-            bettingViewStage.setTitle("End of match!");
+            bettingViewStage.setTitle("Place your bet!");
 
             bettingViewStage.initModality(Modality.WINDOW_MODAL);
             bettingViewStage.initOwner(primaryStage);
@@ -187,6 +201,7 @@ public class MainApp extends Application {
 
             BettingViewController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setImportantThings(match);
 
             bettingViewStage.showAndWait();
 
@@ -199,28 +214,13 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-
-    public float getMoney() {
-        return money;
-    }
-
-    public void setMoney(float money) {
-        this.money = money;
-        DecimalFormat df = new DecimalFormat("0.00");
-        moneyText.setText(df.format(money) + " €");
-    }
-
     public void setMatchesWon(int matchesWon) {
-        this.matchesWon = matchesWon;
+        MainApp.matchesWon = matchesWon;
         matchesWonText.setText(matchesWon + "");
     }
 
     public void setMatchesLost(int matchesLost) {
-        this.matchesLost = matchesLost;
+        MainApp.matchesLost = matchesLost;
         matchesLostText.setText(matchesLost + "");
     }
 }

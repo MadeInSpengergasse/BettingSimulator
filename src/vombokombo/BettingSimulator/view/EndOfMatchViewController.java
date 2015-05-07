@@ -1,10 +1,11 @@
 package vombokombo.BettingSimulator.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import vombokombo.BettingSimulator.MainApp;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by Luca on 04.05.2015.
@@ -17,13 +18,13 @@ public class EndOfMatchViewController {
     private int wonMoney;
 
     @FXML
-    private TextField wonLost;
+    private Text wonLost;
 
     @FXML
-    private TextField textWonLost;
+    private Text textWonLost;
 
     @FXML
-    private TextField balance;
+    private Text balance;
 
     public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
@@ -31,12 +32,33 @@ public class EndOfMatchViewController {
 
 
     public void setImportantThings(boolean won, int wonMoney) {
-        this.won = won;
-        this.wonMoney = wonMoney;
+        setWon(won);
+        setWonMoney(wonMoney);
+        setBalance();
     }
 
     @FXML
     public void continueButton() {
         ((Stage) wonLost.getScene().getWindow()).close();
+    }
+
+    public void setWon(boolean won) {
+        this.won = won;
+        if (won)
+            textWonLost.setText("won!!");
+        else
+            textWonLost.setText("lost.");
+    }
+
+    public void setWonMoney(int wonMoney) {
+        this.wonMoney = wonMoney;
+        DecimalFormat df = new DecimalFormat("0.00");
+        wonLost.setText(df.format(wonMoney) + " " + MainApp.EURO);
+        MainApp.mainapp.setMoney(MainApp.getMoney() + wonMoney);
+    }
+
+    public void setBalance() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        balance.setText(df.format(MainApp.getMoney()) + " " + MainApp.EURO);
     }
 }
