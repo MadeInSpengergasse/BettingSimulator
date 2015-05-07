@@ -1,10 +1,12 @@
 package vombokombo.BettingSimulator.view;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import vombokombo.BettingSimulator.MainApp;
+import vombokombo.BettingSimulator.model.Event;
 import vombokombo.BettingSimulator.model.Match;
 import vombokombo.BettingSimulator.util.TeamHelper;
 
@@ -24,17 +26,26 @@ public class MainViewController {
     @FXML
     private TableView<Match> matchesTable;
 
+  /*
     @FXML
-    private TableColumn<Match, String> oddsA;
+    private TableColumn<Match, Number> oddsA;
 
     @FXML
-    private TableColumn<Match, String> oddsB;
+    private TableColumn<Match, Number> oddsB;
 
     @FXML
     private TableColumn<Match, String> teamA;
 
     @FXML
     private TableColumn<Match, String> teamB;
+*/
+    @FXML
+    private TableColumn<Match, String> odds;
+
+    @FXML
+    private TableColumn<Match, String> teams;
+
+    private ObservableList<Match> matches;
 
 
 
@@ -46,10 +57,14 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-//        generateMatches(20);
         //TODO: CHANGE AND INIT!!!
-//        oddsA.setCellValueFactory(cellData -> cellData.getValue().get);
-//        timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
+//        oddsA.setCellValueFactory(cellData -> cellData.getValue().oddsAProperty());
+//        oddsB.setCellValueFactory(cellData -> cellData.getValue().oddsBProperty());
+//        teamA.setCellValueFactory(cellData -> cellData.getValue().teamAProperty());
+//        teamB.setCellValueFactory(cellData -> cellData.getValue().teamBProperty());
+        odds.setCellValueFactory(cellData -> cellData.getValue().oddsProperty());
+        teams.setCellValueFactory(cellData -> cellData.getValue().teamsProperty());
+        generateMatches(20);
     }
 
     @FXML
@@ -74,6 +89,8 @@ public class MainViewController {
 
     public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
+        matchesTable.setItems(matches);
+
     }
 
     public Text getMoneyText() {
@@ -103,6 +120,8 @@ public class MainViewController {
 
     public void addMatch(String teamA, String teamB, int oddsA, int oddsB) {
         //TODO: Add match!!
+        matches.add(new Match(teamA, teamB, oddsA, oddsB));
+
     }
 
 }

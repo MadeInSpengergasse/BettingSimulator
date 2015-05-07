@@ -1,5 +1,7 @@
 package vombokombo.BettingSimulator.util;
 
+import vombokombo.BettingSimulator.MainApp;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,8 +17,9 @@ public class TeamHelper {
 
     public static String getRandomTeamName() {
         try {
+            System.out.println(MainApp.class.getResource(FILENAME));
             if (lineCount == -1) {
-                BufferedReader reader = new BufferedReader(new FileReader(new File(TeamHelper.class.getResource(FILENAME).toURI())));
+                BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));
                 int tempCount = 0;
                 String read = reader.readLine();
                 while (read != null) {
@@ -26,7 +29,7 @@ public class TeamHelper {
                 lineCount = tempCount;
 
             }
-            BufferedReader reader = new BufferedReader(new FileReader(new File(TeamHelper.class.getResource(FILENAME).toURI())));
+            BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));
             int pos = new Random().nextInt(lineCount);
 
             for (int i = 0; i < pos; i++) {
@@ -34,7 +37,7 @@ public class TeamHelper {
             }
             return reader.readLine();
         } catch (Exception e) {
-
+            e.printStackTrace();
             return "ERROR";
         }
     }
