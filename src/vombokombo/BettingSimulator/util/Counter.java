@@ -12,7 +12,11 @@ import java.time.Duration;
 
 public class Counter {
     Timer timer;
-    private boolean status; // false == stopped, true == running
+    /**
+     * false = stopped
+     * true = running
+     */
+    private boolean status;
     private int endMinutes;
     private int timeSeconds;
 
@@ -40,10 +44,11 @@ public class Counter {
         timeSeconds++;
         timeLabel.setText(TimeStamp.convert(timeSeconds));
         if (timeSeconds % 30 == 0) {
-            controller.addEvent(EventHelper.generateEvent("Team A", "Team B", getTimeSeconds()));
+            controller.addEvent(EventHelper.generateEvent(controller.getTeamNameA(), controller.getTeamNameB(), getTimeSeconds()));
         }
         if (TimeStamp.getTotalMinutes(timeSeconds) >= endMinutes) {
-            handleEndOfMatch();
+            controller.handleEndOfMatch();
+            timer.stop();
         }
 //        System.out.println(timeSeconds);
     }
@@ -65,12 +70,6 @@ public class Counter {
         return timeSeconds;
     }
 
-    public void handleEndOfMatch() {
-        timer.stop();
-        ((Stage) controller.getTimeLabel().getScene().getWindow()).close();
-        Platform.runLater(() -> {
-            mainapp.showEndOfMatchView(true, 100);
-        });
-    }
+
 
 }

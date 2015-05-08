@@ -110,7 +110,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void showLiveticker() {
+    public void showLiveticker(String teamA, String teamB, boolean betOnA, float moneyBet) {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -127,6 +127,7 @@ public class MainApp extends Application {
 
             LivetickerViewController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setImportantThing(teamA, teamB, betOnA, moneyBet);
 
             livetickerStage.showAndWait();
 
@@ -157,7 +158,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void showEndOfMatchView(boolean won, int wonMoney) {
+    public void showEndOfMatchView(int status, float betMoney) {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -174,7 +175,7 @@ public class MainApp extends Application {
 
             EndOfMatchViewController controller = loader.getController();
             controller.setMainApp(this);
-            controller.setImportantThings(won, wonMoney);
+            controller.setImportantThings(status, betMoney);
 
 
             endOfMatchStage.showAndWait();
@@ -221,6 +222,16 @@ public class MainApp extends Application {
 
     public void setMatchesLost(int matchesLost) {
         MainApp.matchesLost = matchesLost;
+        matchesLostText.setText(matchesLost + "");
+    }
+
+    public void increaseMatchesWon(){
+        matchesWon++;
+        matchesWonText.setText(matchesWon + "");
+    }
+
+    public void increaseMatchesLost(){
+        matchesLost++;
         matchesLostText.setText(matchesLost + "");
     }
 }

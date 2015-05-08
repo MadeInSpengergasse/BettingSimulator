@@ -1,5 +1,6 @@
 package vombokombo.BettingSimulator.view;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,21 @@ import vombokombo.BettingSimulator.model.Event.EventType;
 import vombokombo.BettingSimulator.util.Counter;
 
 public class LivetickerViewController {
+
+    private String teamNameA;
+    private String teamNameB;
+
+    public String getTeamNameA() {
+        return teamNameA;
+    }
+
+    public String getTeamNameB() {
+        return teamNameB;
+    }
+
+    private boolean betOnA;
+
+    private float moneyBet;
 
     Counter counter;
 
@@ -102,12 +118,14 @@ public class LivetickerViewController {
         */
     }
 
-    public void setTeamA(String text) {
-        teamA.setText(text);
+    public void setTeamA(String teamA) {
+        this.teamA.setText(teamA);
+        this.teamNameA = teamA;
     }
 
-    public void setTeamB(String text) {
-        teamB.setText(text);
+    public void setTeamB(String teamB) {
+        this.teamB.setText(teamB);
+        this.teamNameB = teamB;
     }
 
     public int getScoreTeamA() {
@@ -135,9 +153,12 @@ public class LivetickerViewController {
 //        Platform.runLater(() -> {
         if (event != null) {
             switch (event.getType()) {
-                case GOAL:
+                case GOAL_A:
                     setScoreTeamA(Integer.toString(getScoreTeamA() + 1));
                     //TODO: set right team!
+                    break;
+                case GOAL_B:
+                    setScoreTeamB(Integer.toString(getScoreTeamB() + 1));
                     break;
                 default:
                     break;
@@ -153,5 +174,27 @@ public class LivetickerViewController {
         return time;
     }
 
+
+    public void setImportantThing(String teamA, String teamB, boolean betOnA, float moneyBet) {
+        setTeamA(teamA);
+        setTeamB(teamB);
+        this.betOnA = betOnA;
+        this.moneyBet = moneyBet;
+    }
+
+    public void handleEndOfMatch() {
+        ((Stage) getTimeLabel().getScene().getWindow()).close();
+        int status;
+        if(getScoreTeamA() == getScoreTeamB()){
+            status = 1;
+        } else if (((getScoreTeamA() > getScoreTeamB()) && betOnA) || ((getScoreTeamB() > getScoreTeamA()) && !betOnA)) {
+            status = 2;
+        } else {
+            status = 0;
+        }
+        Platform.runLater(() -> {
+            mainApp.showEndOfMatchView(status, moneyBet);
+        });
+    }
 
 }

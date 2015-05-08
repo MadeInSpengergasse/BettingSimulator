@@ -40,6 +40,6 @@ public class Event {
     }
 
     public enum EventType {
-        GOAL, UNKNOWN
+        GOAL_A, GOAL_B, UNKNOWN
     }
 }

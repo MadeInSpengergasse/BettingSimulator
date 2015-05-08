@@ -12,8 +12,10 @@ public class EventHelper {
 
         if (random.nextInt(100) <= 5) {
             if (random.nextInt(2) == 0) {
-                return new Event(timeSeconds, (teamNameA + " scored a goal!"), EventType.GOAL);
+                return new Event(timeSeconds, (teamNameA + " scored a goal!"), EventType.GOAL_A);
                 //TODO: Add randomness! and more events!
+            } else {
+                return new Event(timeSeconds, (teamNameB + " scored a goal!"), EventType.GOAL_B);
             }
         }
         return null;
