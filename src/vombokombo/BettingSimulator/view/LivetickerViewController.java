@@ -31,6 +31,8 @@ public class LivetickerViewController {
 
     private float moneyBet;
 
+    private int oddsA;
+
     Counter counter;
 
     @FXML
@@ -175,11 +177,12 @@ public class LivetickerViewController {
     }
 
 
-    public void setImportantThing(String teamA, String teamB, boolean betOnA, float moneyBet) {
+    public void setImportantThing(String teamA, String teamB, boolean betOnA, float moneyBet, int oddsA) {
         setTeamA(teamA);
         setTeamB(teamB);
         this.betOnA = betOnA;
         this.moneyBet = moneyBet;
+        this.oddsA = oddsA;
     }
 
     public void handleEndOfMatch() {

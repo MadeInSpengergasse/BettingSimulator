@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class EventHelper {
 
-    public static Event generateEvent(String teamNameA, String teamNameB, int oddsA, int oddsB,int timeSeconds) {
+    public static Event generateEvent(String teamNameA, String teamNameB, int oddsA,int timeSeconds) {
         Random random = new Random();
 
         if (random.nextInt(100) <= 5) {

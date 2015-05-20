@@ -110,7 +110,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void showLiveticker(String teamA, String teamB, boolean betOnA, float moneyBet) {
+    public void showLiveticker(String teamA, String teamB, boolean betOnA, float moneyBet, int oddsA) {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -127,7 +127,7 @@ public class MainApp extends Application {
 
             LivetickerViewController controller = loader.getController();
             controller.setMainApp(this);
-            controller.setImportantThing(teamA, teamB, betOnA, moneyBet);
+            controller.setImportantThing(teamA, teamB, betOnA, moneyBet, oddsA);
 
             livetickerStage.showAndWait();
 

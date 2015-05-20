@@ -1,8 +1,6 @@
 package vombokombo.BettingSimulator.util;
 
-import javafx.application.Platform;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import org.reactfx.util.FxTimer;
 import org.reactfx.util.Timer;
 import vombokombo.BettingSimulator.MainApp;
@@ -20,6 +18,8 @@ public class Counter {
     private int endMinutes;
     private int timeSeconds;
 
+    private int oddsA;
+
     private Label timeLabel;
 
     private LivetickerViewController controller;
@@ -27,8 +27,8 @@ public class Counter {
     private MainApp mainapp;
 
     public Counter(Label timeLabelP, int delay,
-                   LivetickerViewController controller, int endMinutes, MainApp mainapp) {
-
+                   LivetickerViewController controller, int endMinutes, MainApp mainapp, int oddsA) {
+        this.oddsA = oddsA;
         this.timeLabel = timeLabelP;
         this.endMinutes = endMinutes;
         this.mainapp = mainapp;
@@ -44,7 +44,7 @@ public class Counter {
         timeSeconds++;
         timeLabel.setText(TimeStamp.convert(timeSeconds));
         if (timeSeconds % 30 == 0) {
-            controller.addEvent(EventHelper.generateEvent(controller.getTeamNameA(), controller.getTeamNameB(), getTimeSeconds()));
+            controller.addEvent(EventHelper.generateEvent(controller.getTeamNameA(), controller.getTeamNameB(), getTimeSeconds(), oddsA));
         }
         if (TimeStamp.getTotalMinutes(timeSeconds) >= endMinutes) {
             controller.handleEndOfMatch();

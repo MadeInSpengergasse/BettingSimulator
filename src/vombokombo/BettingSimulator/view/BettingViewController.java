@@ -81,7 +81,7 @@ public class BettingViewController {
         //TODO: WRITE
 //        System.out.println(amountInt);
         closeWindow();
-        Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), true, amountInt));
+        Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), true, amountInt, Integer.parseInt(oddsA.getText())));
     }
 
     @FXML
@@ -89,7 +89,7 @@ public class BettingViewController {
         //TODO: WRITE
 //        System.out.println(amountInt);
         closeWindow();
-        Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), false, amountInt));
+        Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), false, amountInt, Integer.parseInt(oddsA.getText())));
     }
 
     @FXML
