@@ -126,6 +126,7 @@ public class MainApp extends Application {
             livetickerStage.initOwner(primaryStage);
             Scene scene = new Scene(livetickerView);
             livetickerStage.setScene(scene);
+            livetickerStage.setResizable(false);
 
             LivetickerViewController controller = loader.getController();
             controller.setMainApp(this);
@@ -174,6 +175,7 @@ public class MainApp extends Application {
             endOfMatchStage.initOwner(primaryStage);
             Scene scene = new Scene(endOfMatchView);
             endOfMatchStage.setScene(scene);
+            endOfMatchStage.setResizable(false);
 
             EndOfMatchViewController controller = loader.getController();
             controller.setMainApp(this);
@@ -201,6 +203,7 @@ public class MainApp extends Application {
             bettingViewStage.initOwner(primaryStage);
             Scene scene = new Scene(bettingView);
             bettingViewStage.setScene(scene);
+            bettingViewStage.setResizable(false);
 
             BettingViewController controller = loader.getController();
             controller.setMainApp(this);
