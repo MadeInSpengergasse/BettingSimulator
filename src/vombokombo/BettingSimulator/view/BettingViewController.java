@@ -2,11 +2,14 @@ package vombokombo.BettingSimulator.view;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Match;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by Luca on 04.05.2015.
@@ -16,7 +19,7 @@ public class BettingViewController {
     private static final String NON_NUMERIC_REGEX = "[^\\d.]";
 
     private static final int INCREASEDECREASEBY = 100;
-    private int amountInt = 100;
+    private float amountInt = 100;
     private MainApp mainapp;
     @FXML
     private Text teamA;
@@ -38,7 +41,17 @@ public class BettingViewController {
         amount.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 System.out.println("focus lost");
-                setAmount(Integer.parseInt(0 + amount.getText().replaceAll(NON_NUMERIC_REGEX, "")));
+                setAmount(Float.parseFloat(0 + amount.getText().replaceAll(NON_NUMERIC_REGEX, "")));
+                String bet=amount.getText().replaceAll(NON_NUMERIC_REGEX, "");
+                if (Float.parseFloat(bet)>MainApp.getMoney()){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Invalid amount!");
+                    alert.setHeaderText("Wrong input!");
+                    alert.setContentText("Too high input!");
+
+                    alert.showAndWait();
+                    setAmount(MainApp.getMoney());
+                }
             }
         });
     }
@@ -52,9 +65,10 @@ public class BettingViewController {
         this.oddsB.setText(match.getOddsB() + "");
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
+        DecimalFormat df= new DecimalFormat("0.00");
         this.amountInt = amount;
-        this.amount.setText(amount + " " + MainApp.EURO);
+        this.amount.setText(df.format(amount) + " " + MainApp.EURO);
     }
 
 
