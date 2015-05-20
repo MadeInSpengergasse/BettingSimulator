@@ -3,7 +3,9 @@ package vombokombo.BettingSimulator.util;
 import vombokombo.BettingSimulator.MainApp;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -11,33 +13,29 @@ import java.util.Random;
  */
 public class TeamHelper {
 
+    private static ArrayList<String> teamnames;
+
     public static final String FILENAME = "/teamnames.txt";
-    public static int lineCount = -1;
 
     public static String getRandomTeamName() {
         try {
-            //TODO: OPTIMIZE!! (maybe ArrayList)
-            System.out.println(MainApp.class.getResource(FILENAME));
-            if (lineCount == -1) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(FILENAME)));
-                int tempCount = 0;
-                while (reader.readLine() != null) {
-                    tempCount++;
-                }
-                lineCount = tempCount;
-                System.out.println(lineCount);
+            if (teamnames == null) {
+                load();
             }
-            BufferedReader reader = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(FILENAME)));
-            int pos = new Random().nextInt(lineCount);
-
-            for (int i = 0; i < pos; i++) {
-                reader.readLine();
-            }
-            return reader.readLine();
+            return teamnames.get(new Random().nextInt(teamnames.size()));
         } catch (Exception e) {
             e.printStackTrace();
             ExceptionDialog.showExceptionDialog(e);
             return "ERROR!";
+        }
+    }
+
+    private static void load() throws IOException {
+        teamnames = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(FILENAME)));
+        String str;
+        while ((str = reader.readLine()) != null) {
+            teamnames.add(str);
         }
     }
 
