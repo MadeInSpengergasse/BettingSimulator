@@ -2,12 +2,10 @@ package vombokombo.BettingSimulator.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Match;
@@ -90,7 +88,7 @@ public class MainViewController {
 
     @FXML
     private void openLiveticker() {
-        mainapp.showLiveticker("Team A", "Team B", true, 100);
+        mainapp.showLiveticker("Team A", "Team B", true, 100, 30);
     }
 
     @FXML

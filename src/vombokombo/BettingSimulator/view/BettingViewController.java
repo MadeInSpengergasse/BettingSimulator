@@ -42,8 +42,8 @@ public class BettingViewController {
             if (!newValue) {
                 System.out.println("focus lost");
                 setAmount(Float.parseFloat(0 + amount.getText().replaceAll(NON_NUMERIC_REGEX, "")));
-                String bet=amount.getText().replaceAll(NON_NUMERIC_REGEX, "");
-                if (Float.parseFloat(bet)>MainApp.getMoney()){
+                String bet = amount.getText().replaceAll(NON_NUMERIC_REGEX, "");
+                if (Float.parseFloat(bet) > MainApp.getMoney()) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Invalid amount!");
                     alert.setHeaderText("Wrong input!");
@@ -66,7 +66,7 @@ public class BettingViewController {
     }
 
     public void setAmount(float amount) {
-        DecimalFormat df= new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("0.00");
         this.amountInt = amount;
         this.amount.setText(df.format(amount) + " " + MainApp.EURO);
     }
@@ -109,7 +109,7 @@ public class BettingViewController {
         closeWindow();
     }
 
-    private void closeWindow(){
+    private void closeWindow() {
         ((Stage) amount.getScene().getWindow()).close();
     }
 

@@ -16,8 +16,34 @@ import vombokombo.BettingSimulator.util.Counter;
 
 public class LivetickerViewController {
 
+    Counter counter;
     private String teamNameA;
     private String teamNameB;
+    private boolean betOnA;
+    private float moneyBet;
+    private int oddsA;
+    @FXML
+    private TextArea teamA;
+    @FXML
+    private TextArea teamB;
+    @FXML
+    private Label scoreTeamA;
+    @FXML
+    private Label scoreTeamB;
+    @FXML
+    private Label time;
+    @FXML
+    private TableView<Event> eventTable;
+    @FXML
+    private TableColumn<Event, String> timeStamp;
+    @FXML
+    private TableColumn<Event, String> event;
+    private MainApp mainApp;
+    private ObservableList<Event> events;
+
+    public LivetickerViewController() {
+        events = FXCollections.observableArrayList();
+    }
 
     public String getTeamNameA() {
         return teamNameA;
@@ -25,44 +51,6 @@ public class LivetickerViewController {
 
     public String getTeamNameB() {
         return teamNameB;
-    }
-
-    private boolean betOnA;
-
-    private float moneyBet;
-
-    private int oddsA;
-
-    Counter counter;
-
-    @FXML
-    private TextArea teamA;
-    @FXML
-    private TextArea teamB;
-
-    @FXML
-    private Label scoreTeamA;
-    @FXML
-    private Label scoreTeamB;
-
-    @FXML
-    private Label time;
-
-    @FXML
-    private TableView<Event> eventTable;
-
-    @FXML
-    private TableColumn<Event, String> timeStamp;
-
-    @FXML
-    private TableColumn<Event, String> event;
-
-    private MainApp mainApp;
-
-    private ObservableList<Event> events;
-
-    public LivetickerViewController() {
-        events = FXCollections.observableArrayList();
     }
 
     @FXML
@@ -98,7 +86,7 @@ public class LivetickerViewController {
         System.out.println("Start Button");
         if (counter == null) {
             System.out.println("Real Start");
-            counter = new Counter(time, 1, this, 90, mainApp);
+            counter = new Counter(time, 1, this, 90, mainApp, oddsA);
         }
     }
 
@@ -188,7 +176,7 @@ public class LivetickerViewController {
     public void handleEndOfMatch() {
         ((Stage) getTimeLabel().getScene().getWindow()).close();
         int status;
-        if(getScoreTeamA() == getScoreTeamB()){
+        if (getScoreTeamA() == getScoreTeamB()) {
             status = 1;
         } else if (((getScoreTeamA() > getScoreTeamB()) && betOnA) || ((getScoreTeamB() > getScoreTeamA()) && !betOnA)) {
             status = 2;

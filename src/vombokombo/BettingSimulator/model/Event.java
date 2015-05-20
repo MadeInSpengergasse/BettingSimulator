@@ -9,6 +9,7 @@ public class Event {
     private StringProperty timeStamp;
     private StringProperty event;
     private EventType type;
+
     public Event(int timeSeconds, String event, EventType type) {
         this.timeStamp = new SimpleStringProperty(TimeStamp.convert(timeSeconds));
         this.event = new SimpleStringProperty(event);

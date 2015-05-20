@@ -225,12 +225,12 @@ public class MainApp extends Application {
         matchesLostText.setText(matchesLost + "");
     }
 
-    public void increaseMatchesWon(){
+    public void increaseMatchesWon() {
         matchesWon++;
         matchesWonText.setText(matchesWon + "");
     }
 
-    public void increaseMatchesLost(){
+    public void increaseMatchesLost() {
         matchesLost++;
         matchesLostText.setText(matchesLost + "");
     }

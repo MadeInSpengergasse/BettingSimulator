@@ -45,9 +45,9 @@ public class EndOfMatchViewController {
     }
 
     private void setMainWonLost(int status) {
-        if(status == 0){
+        if (status == 0) {
             MainApp.mainapp.increaseMatchesLost();
-        } else if(status == 2){
+        } else if (status == 2) {
             MainApp.mainapp.increaseMatchesWon();
         }
     }
@@ -72,9 +72,9 @@ public class EndOfMatchViewController {
 
     public void setWonMoney(float betMoney, int status) {
         System.out.println("Bet money: " + betMoney);
-        if(status == 0){
+        if (status == 0) {
             this.wonMoney -= betMoney;
-        } else if(status == 2){
+        } else if (status == 2) {
             this.wonMoney += betMoney;
         }
         DecimalFormat df = new DecimalFormat("0.00");
