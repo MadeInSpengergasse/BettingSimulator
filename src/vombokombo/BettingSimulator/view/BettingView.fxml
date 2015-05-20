@@ -19,19 +19,19 @@
                 <Font size="22.0" />
             </font>
         </Label>
-        <Label layoutX="126.0" layoutY="115.0" text="vs">
+        <Label layoutX="126.0" layoutY="116.0" text="vs">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
         <Label layoutX="37.0" layoutY="327.0" text="Bet on" />
         <Label layoutX="179.0" layoutY="327.0" text="Bet on" />
-        <Text fx:id="teamA" layoutX="4.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" wrappingWidth="111.7294921875" />
-        <Text fx:id="teamB" layoutX="155.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="92.7294921875" />
+        <Text fx:id="teamA" layoutX="11.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" wrappingWidth="111.7294921875" />
+        <Text fx:id="teamB" layoutX="152.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="111.72949245944619" />
         <Text fx:id="teamA2" layoutX="37.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
         <Text fx:id="teamB2" layoutX="179.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
-        <Text fx:id="oddsA" layoutX="93.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" />
-        <Text fx:id="oddsB" layoutX="149.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+        <Text fx:id="oddsA" layoutX="97.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" />
+        <Text fx:id="oddsB" layoutX="146.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
         <Button layoutX="110.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
     </children>
 </Pane>
