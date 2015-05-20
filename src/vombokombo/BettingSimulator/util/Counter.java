@@ -44,7 +44,7 @@ public class Counter {
         timeSeconds++;
         timeLabel.setText(TimeStamp.convert(timeSeconds));
         if (timeSeconds % 30 == 0) {
-            controller.addEvent(EventHelper.generateEvent(controller.getTeamNameA(), controller.getTeamNameB(), getTimeSeconds(), oddsA));
+            controller.addEvent(EventHelper.generateEvent(controller.getTeamNameA(), controller.getTeamNameB(), oddsA, getTimeSeconds()));
         }
         if (TimeStamp.getTotalMinutes(timeSeconds) >= endMinutes) {
             controller.handleEndOfMatch();
