@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.40"
-      fx:controller="vombokombo.BettingSimulator.view.BettingViewController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.BettingViewController">
     <children>
-        <Label layoutX="32.0" layoutY="179.0" prefHeight="17.0" prefWidth="62.0" text="Amount:"/>
-        <Button layoutX="33.0" layoutY="268.0" mnemonicParsing="false" onAction="#betOnA" prefHeight="59.0"
-                prefWidth="62.0" text="A"/>
-        <Button layoutX="179.0" layoutY="268.0" mnemonicParsing="false" onAction="#betOnB" prefHeight="59.0"
-                prefWidth="62.0" text="B"/>
-        <Button layoutX="178.0" layoutY="196.0" mnemonicParsing="false" onAction="#increase" text="+"/>
-        <Button layoutX="211.0" layoutY="196.0" mnemonicParsing="false" onAction="#decrease" prefHeight="26.0"
-                prefWidth="29.0" text="-"/>
-        <TextField fx:id="amount" layoutX="32.0" layoutY="196.0" prefHeight="25.0" prefWidth="129.0" text="100 €"/>
+        <Label layoutX="32.0" layoutY="179.0" prefHeight="17.0" prefWidth="62.0" text="Amount:" />
+        <Button layoutX="33.0" layoutY="268.0" mnemonicParsing="false" onAction="#betOnA" prefHeight="59.0" prefWidth="62.0" text="A" />
+        <Button layoutX="179.0" layoutY="268.0" mnemonicParsing="false" onAction="#betOnB" prefHeight="59.0" prefWidth="62.0" text="B" />
+        <Button layoutX="178.0" layoutY="196.0" mnemonicParsing="false" onAction="#increase" text="+" />
+        <Button layoutX="211.0" layoutY="196.0" mnemonicParsing="false" onAction="#decrease" prefHeight="26.0" prefWidth="29.0" text="-" />
+        <TextField fx:id="amount" layoutX="32.0" layoutY="196.0" prefHeight="25.0" prefWidth="129.0" text="100 €" />
         <Label layoutX="126.0" layoutY="46.0" text="vs">
             <font>
-                <Font size="22.0"/>
+                <Font size="22.0" />
             </font>
         </Label>
         <Label layoutX="126.0" layoutY="115.0" text="vs">
             <font>
-                <Font size="17.0"/>
+                <Font size="17.0" />
             </font>
         </Label>
-        <Label layoutX="26.0" layoutY="327.0" text="Bet on"/>
-        <Label layoutX="174.0" layoutY="327.0" text="Bet on"/>
-        <Text fx:id="teamA" layoutX="55.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-        <Text fx:id="teamB" layoutX="197.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-        <Text fx:id="teamA2" layoutX="66.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-        <Text fx:id="teamB2" layoutX="215.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-        <Text fx:id="oddsA" layoutX="55.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-        <Text fx:id="oddsB" layoutX="199.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-        <Button layoutX="110.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancel" text="Cancel"/>
+        <Label layoutX="37.0" layoutY="327.0" text="Bet on" />
+        <Label layoutX="179.0" layoutY="327.0" text="Bet on" />
+        <Text fx:id="teamA" layoutX="4.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" wrappingWidth="111.7294921875" />
+        <Text fx:id="teamB" layoutX="155.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="92.7294921875" />
+        <Text fx:id="teamA2" layoutX="37.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+        <Text fx:id="teamB2" layoutX="179.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+        <Text fx:id="oddsA" layoutX="93.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" />
+        <Text fx:id="oddsB" layoutX="149.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+        <Button layoutX="110.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
     </children>
 </Pane>
