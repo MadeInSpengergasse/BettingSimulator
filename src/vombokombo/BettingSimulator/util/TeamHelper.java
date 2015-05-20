@@ -3,8 +3,7 @@ package vombokombo.BettingSimulator.util;
 import vombokombo.BettingSimulator.MainApp;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 /**
@@ -20,7 +19,7 @@ public class TeamHelper {
             //TODO: OPTIMIZE!! (maybe ArrayList)
             System.out.println(MainApp.class.getResource(FILENAME));
             if (lineCount == -1) {
-                BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(FILENAME)));
                 int tempCount = 0;
                 while (reader.readLine() != null) {
                     tempCount++;
@@ -28,7 +27,7 @@ public class TeamHelper {
                 lineCount = tempCount;
                 System.out.println(lineCount);
             }
-            BufferedReader reader = new BufferedReader(new FileReader(new File(MainApp.class.getResource(FILENAME).toURI())));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(FILENAME)));
             int pos = new Random().nextInt(lineCount);
 
             for (int i = 0; i < pos; i++) {
@@ -37,7 +36,8 @@ public class TeamHelper {
             return reader.readLine();
         } catch (Exception e) {
             e.printStackTrace();
-            return "ERROR";
+            ExceptionDialog.showExceptionDialog(e);
+            return "ERROR!";
         }
     }
 

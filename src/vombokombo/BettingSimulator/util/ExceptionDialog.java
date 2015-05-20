@@ -16,7 +16,8 @@ public class ExceptionDialog {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Exception Dialog");
         alert.setHeaderText("There was an exception while trying to run the program!");
-        alert.setContentText("Could not find file blabla.txt!");
+        alert.setContentText(e.getMessage());
+
 
         // Create expandable Exception.
         StringWriter sw = new StringWriter();
