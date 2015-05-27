@@ -26,6 +26,16 @@ public class Counter {
 
     private MainApp mainapp;
 
+    /**
+     * Initializes the counter with the provided values
+     *
+     * @param timeLabelP reference the the label to change (timelabel)
+     * @param delay      the delay between the cicles = speed
+     * @param controller a reference to the controller
+     * @param endMinutes after how many minutes the match should end = when the endofmatchview opens
+     * @param mainapp    reference to the main app
+     * @param oddsA      the odds of team A
+     */
     public Counter(Label timeLabelP, int delay,
                    LivetickerViewController controller, int endMinutes, MainApp mainapp, int oddsA) {
         this.oddsA = oddsA;
@@ -40,6 +50,9 @@ public class Counter {
         this.controller = controller;
     }
 
+    /**
+     * runs at every cicle of the timer (configureable with the delay)
+     */
     public void scheduledTask() {
         timeSeconds++;
         timeLabel.setText(TimeStamp.convert(timeSeconds));
@@ -53,7 +66,9 @@ public class Counter {
 //        System.out.println(timeSeconds);
     }
 
-
+    /**
+     * gets called when the user clicks the stop/resume button
+     */
     public void stopResume() {
         if (!status) {
             System.out.println("Timer stopped, now started!");
@@ -66,6 +81,9 @@ public class Counter {
         }
     }
 
+    /**
+     * @return the total seconds
+     */
     public int getTimeSeconds() {
         return timeSeconds;
     }

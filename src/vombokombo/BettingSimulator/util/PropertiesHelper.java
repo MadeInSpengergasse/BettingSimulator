@@ -17,6 +17,11 @@ public class PropertiesHelper {
 
     public static final String ORIGINAL_FILENAME = "BettingSimulator.db";
 
+    /**
+     * saves the properties from the MainApp class to the provided file
+     *
+     * @param file the file where to save in
+     */
     public static void saveToFile(File file) {
         if (file == null)
             return;
@@ -30,6 +35,10 @@ public class PropertiesHelper {
         MainApp.currentFile = file;
     }
 
+    /**
+     * loads the save from the provided files and configures everything in the MainApp class
+     * @param file the file to load from
+     */
     public static void loadSaveFromFile(File file) {
         if (file == null)
             return;
@@ -53,6 +62,9 @@ public class PropertiesHelper {
         MainApp.setProperties(props);
     }
 
+    /**
+     * can get called from the save menu, if the currentFile is null, the saveAs method will be called
+     */
     public static void save() {
         if (MainApp.currentFile == null) {
             saveAs();
@@ -61,6 +73,9 @@ public class PropertiesHelper {
         }
     }
 
+    /**
+     * can get called from the save menu, handles everything else
+     */
     public static void saveAs() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a location to save!");
@@ -69,6 +84,9 @@ public class PropertiesHelper {
         saveToFile(fileChooser.showSaveDialog(new Stage()));
     }
 
+    /**
+     * can get called from the open menu, handles everything else
+     */
     public static void open() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose a location to load from!");
@@ -77,6 +95,9 @@ public class PropertiesHelper {
         loadSaveFromFile(fileChooser.showOpenDialog(new Stage()));
     }
 
+    /**
+     * can get called from the new menu, handles everything else
+     */
     public static void newM() {
         MainApp.currentFile = null;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -90,10 +111,6 @@ public class PropertiesHelper {
 
         if (alert.showAndWait().get() == buttonTypeOk)
             MainApp.mainapp.setSave(1000, 0, 0);
-    }
-
-    public static void main(String[] args) {
-        saveAs();
     }
 
 }

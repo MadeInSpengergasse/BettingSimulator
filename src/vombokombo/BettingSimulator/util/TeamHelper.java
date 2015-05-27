@@ -16,6 +16,11 @@ public class TeamHelper {
     public static final String FILENAME = "/teamnames.txt";
     private static ArrayList<String> teamnames;
 
+    /**
+     * Gets a random team name from the file in FILENAME
+     *
+     * @return a random team name
+     */
     public static String getRandomTeamName() {
         try {
             if (teamnames == null) {
@@ -29,6 +34,10 @@ public class TeamHelper {
         }
     }
 
+    /**
+     * loads the file from FILENAME into the arraylist
+     * @throws IOException
+     */
     private static void load() throws IOException {
         teamnames = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(FILENAME)));

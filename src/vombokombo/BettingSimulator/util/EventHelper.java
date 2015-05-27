@@ -7,6 +7,15 @@ import java.util.Random;
 
 public class EventHelper {
 
+    /**
+     * generates an event based on the following parameters
+     *
+     * @param teamNameA   the name of team A
+     * @param teamNameB   the name of team B
+     * @param oddsA       the odds of team A
+     * @param timeSeconds the total time in seconds
+     * @return an event if "successful", otherwise null
+     */
     public static Event generateEvent(String teamNameA, String teamNameB, int oddsA, int timeSeconds) {
         Random random = new Random();
         if (random.nextInt(100) <= 3) {

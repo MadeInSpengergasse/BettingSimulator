@@ -12,6 +12,11 @@ import java.io.StringWriter;
 
 public class ExceptionDialog {
 
+    /**
+     * Can get called in an catch block
+     *
+     * @param e the exception to show
+     */
     public static void showExceptionDialog(Exception e) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Exception Dialog");
