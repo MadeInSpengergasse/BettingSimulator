@@ -32,11 +32,19 @@ public class EndOfMatchViewController {
     @FXML
     private Text balance;
 
+    /**
+     * Sets the mainapp
+     * @param mainapp is the mainapp you want to merge with the attribute mainapp
+     */
     public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
     }
 
-
+    /**
+     * Sets the information which will be displayed after the outcome of a match
+     * @param status describes either if you have won, lost or if it is a draw
+     * @param betMoney is the money you bet
+     */
     public void setImportantThings(int status, float betMoney) {
         setWon(status);
         setWonMoney(betMoney, status);
@@ -44,6 +52,10 @@ public class EndOfMatchViewController {
         setMainWonLost(status);
     }
 
+    /**
+     * Increases the amount of Wins/Losses you have made
+     * @param status determines if you either have lost or won
+     */
     private void setMainWonLost(int status) {
         if (status == 0) {
             MainApp.mainapp.increaseMatchesLost();
@@ -52,12 +64,19 @@ public class EndOfMatchViewController {
         }
     }
 
+    /**
+     * The action which will be performed if you press the "Continue" Button
+     */
     @FXML
     public void continueButton() {
         ((Stage) wonLost.getScene().getWindow()).close();
 
     }
 
+    /**
+     * displays if you have either won or lost the match, or if it is a draw
+     * @param status determines the outcome of the match
+     */
     public void setWon(int status) {
         this.won = status;
         if (status == 0)
@@ -70,6 +89,11 @@ public class EndOfMatchViewController {
             textWonLost.setText("there was some sort of error...");
     }
 
+    /**
+     * Sets the Money you win/lose after a match
+     * @param betMoney the money you win/lose
+     * @param status outcome of the match
+     */
     public void setWonMoney(float betMoney, int status) {
         System.out.println("Bet money: " + betMoney);
         if (status == 0) {
@@ -82,6 +106,9 @@ public class EndOfMatchViewController {
         MainApp.mainapp.setMoney(MainApp.getMoney() + wonMoney);
     }
 
+    /**
+     * Formats your balance right
+     */
     public void setBalance() {
         DecimalFormat df = new DecimalFormat("0.00");
         balance.setText(df.format(MainApp.getMoney()) + " " + MainApp.EURO);
