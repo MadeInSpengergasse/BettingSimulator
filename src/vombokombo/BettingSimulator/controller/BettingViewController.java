@@ -56,6 +56,10 @@ public class BettingViewController {
         });
     }
 
+    /**
+     * Sets the textfields to the given match
+     * @param match match data
+     */
     public void setImportantThings(Match match) {
         teamA.setText(match.getTeamA());
         teamA2.setText(match.getTeamA());
@@ -65,17 +69,27 @@ public class BettingViewController {
         this.oddsB.setText(match.getOddsB() + "");
     }
 
+    /**
+     * Sets the amount to bet
+     * @param amount amount to bet
+     */
     public void setAmount(float amount) {
         DecimalFormat df = new DecimalFormat("0.00");
         this.amountInt = amount;
         this.amount.setText(df.format(amount) + " " + MainApp.EURO);
     }
 
-
+    /**
+     * Sets the mainapp
+     * @param mainapp is the mainapp you want to merge with the attribute mainapp
+     */
     public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
     }
 
+    /**
+     * Action which occurs if you press the big "A" button
+     */
     @FXML
     private void betOnA() {
         //TODO: WRITE
@@ -84,6 +98,9 @@ public class BettingViewController {
         Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), true, amountInt, Integer.parseInt(oddsA.getText())));
     }
 
+    /**
+     * Action which occurs if you press the big "B" button
+     */
     @FXML
     private void betOnB() {
         //TODO: WRITE
@@ -92,23 +109,35 @@ public class BettingViewController {
         Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), false, amountInt, Integer.parseInt(oddsA.getText())));
     }
 
+    /**
+     * Increases the amount to bet by 100
+     */
     @FXML
     private void increase() {
         if (!(amountInt + INCREASEDECREASEBY > MainApp.getMoney()))
             setAmount(amountInt + INCREASEDECREASEBY);
     }
 
+    /**
+     * Decreases th amount to bet by 100
+     */
     @FXML
     private void decrease() {
         if (!(amountInt - INCREASEDECREASEBY < 0))
             setAmount(amountInt - INCREASEDECREASEBY);
     }
 
+    /**
+     * Goes back to the main window and closes this window
+     */
     @FXML
     private void cancel() {
         closeWindow();
     }
 
+    /**
+     * Closes the Window
+     */
     private void closeWindow() {
         ((Stage) amount.getScene().getWindow()).close();
     }

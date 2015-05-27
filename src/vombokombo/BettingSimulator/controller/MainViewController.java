@@ -51,10 +51,16 @@ public class MainViewController {
 
     private MainApp mainapp;
 
+    /**
+     * Constructor
+     */
     public MainViewController() {
         matches = FXCollections.observableArrayList();
     }
 
+    /**
+     * things which should be done as soon as you open the window
+     */
     @FXML
     private void initialize() {
         //TODO: CHANGE AND INIT!!!
@@ -75,50 +81,85 @@ public class MainViewController {
         });
     }
 
+    /**
+     * Action which will be performed if you hit the Close button
+     */
     @FXML
     private void closeButton() {
         System.exit(0);
     }
 
+    /**
+     * Action which will be performed if you hit the Moneyyyy button
+     */
     @FXML
     private void moneyyyy() {
 //        mainapp.setMoney(MainApp.getMoney() + 100);
         moneyText.setText(System.getProperty("user.home"));
     }
 
+    /**
+     * Action which will be performed if you hit the Open Liveticker button
+     */
     @FXML
     private void openLiveticker() {
         mainapp.showLiveticker("Team A", "Team B", true, 100, 30);
     }
 
+    /**
+     * Action which will be performed if you hit the End of Match View button
+     */
     @FXML
     private void openEndOfMatch() {
         mainapp.showEndOfMatchView(1, 100);
     }
 
+    /**
+     * Action which will be performed if you hit the Betting View button
+     */
     @FXML
     private void openBettingView() {
         mainapp.showBettingView(new Match("TeamA", "TeamB", 50, 50));
     }
 
+    /**
+     * Set-method for mainapp
+     * @param mainapp the mainapp you want to merge with your attribute mainapp
+     */
     public void setMainApp(MainApp mainapp) {
         this.mainapp = mainapp;
         matchesTable.setItems(matches);
 
     }
 
+    /**
+     * Get-method for moneyText
+     * @return moneyText
+     */
     public Text getMoneyText() {
         return moneyText;
     }
 
+    /**
+     * Get-method for matchesWonText
+     * @return matchesWonText
+     */
     public Text getMatchesWonText() {
         return matchesWonText;
     }
 
+    /**
+     * Get-method for matchesLostText
+     * @return matchesLostText
+     */
     public Text getMatchesLostText() {
         return matchesLostText;
     }
 
+    /**
+     * Generates random matches
+     * @param count amount of matches which are created
+     */
     public void generateMatches(int count) {
         Random random = new Random();
         for (int i = 0; i < count; i++) {
@@ -132,6 +173,13 @@ public class MainViewController {
         }
     }
 
+    /**
+     * adds a match
+     * @param teamA teamA
+     * @param teamB teamB
+     * @param oddsA oddsA
+     * @param oddsB oddsB
+     */
     public void addMatch(String teamA, String teamB, int oddsA, int oddsB) {
         //TODO: Add match!!
         matches.add(new Match(teamA, teamB, oddsA, oddsB));
