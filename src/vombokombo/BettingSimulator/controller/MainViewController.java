@@ -73,7 +73,6 @@ public class MainViewController {
                 }
             }
         });
-
     }
 
     @FXML
@@ -83,7 +82,8 @@ public class MainViewController {
 
     @FXML
     private void moneyyyy() {
-        mainapp.setMoney(MainApp.getMoney() + 100);
+//        mainapp.setMoney(MainApp.getMoney() + 100);
+        moneyText.setText(System.getProperty("user.home"));
     }
 
     @FXML

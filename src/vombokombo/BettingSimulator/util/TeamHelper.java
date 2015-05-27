@@ -13,9 +13,8 @@ import java.util.Random;
  */
 public class TeamHelper {
 
-    private static ArrayList<String> teamnames;
-
     public static final String FILENAME = "/teamnames.txt";
+    private static ArrayList<String> teamnames;
 
     public static String getRandomTeamName() {
         try {
