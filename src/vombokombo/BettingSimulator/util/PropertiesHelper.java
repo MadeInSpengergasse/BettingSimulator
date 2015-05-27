@@ -78,6 +78,7 @@ public class PropertiesHelper {
     }
 
     public static void newM() {
+        MainApp.currentFile = null;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Do you really want to create a new save?");

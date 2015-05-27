@@ -4,7 +4,7 @@ import javafx.scene.control.Label;
 import org.reactfx.util.FxTimer;
 import org.reactfx.util.Timer;
 import vombokombo.BettingSimulator.MainApp;
-import vombokombo.BettingSimulator.view.LivetickerViewController;
+import vombokombo.BettingSimulator.controller.LivetickerViewController;
 
 import java.time.Duration;
 

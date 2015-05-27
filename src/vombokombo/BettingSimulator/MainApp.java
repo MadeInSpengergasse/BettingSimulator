@@ -10,8 +10,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import vombokombo.BettingSimulator.controller.*;
 import vombokombo.BettingSimulator.model.Match;
-import vombokombo.BettingSimulator.view.*;
 
 import java.io.File;
 import java.io.IOException;

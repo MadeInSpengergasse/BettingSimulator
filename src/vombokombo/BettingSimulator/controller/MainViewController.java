@@ -1,4 +1,4 @@
-package vombokombo.BettingSimulator.view;
+package vombokombo.BettingSimulator.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

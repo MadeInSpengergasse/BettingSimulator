@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.view.BettingViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vombokombo.BettingSimulator.controller.BettingViewController">
     <children>
         <Label layoutX="32.0" layoutY="179.0" prefHeight="17.0" prefWidth="62.0" text="Amount:" />
         <Button layoutX="33.0" layoutY="268.0" mnemonicParsing="false" onAction="#betOnA" prefHeight="59.0" prefWidth="62.0" text="A" />
@@ -28,11 +28,11 @@
         <Label layoutX="179.0" layoutY="327.0" text="Bet on" />
         <Text fx:id="teamA" layoutX="11.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" wrappingWidth="111.7294921875" />
         <Text fx:id="teamB" layoutX="152.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="111.72949245944619" />
-        <Text fx:id="teamA2" layoutX="37.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200.0">
+        <Text fx:id="teamA2" layoutX="37.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="91.0">
          <font>
             <Font size="11.0" />
          </font></Text>
-        <Text fx:id="teamB2" layoutX="179.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200.0">
+        <Text fx:id="teamB2" layoutX="180.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="91.00000514090061">
          <font>
             <Font size="11.0" />
          </font></Text>

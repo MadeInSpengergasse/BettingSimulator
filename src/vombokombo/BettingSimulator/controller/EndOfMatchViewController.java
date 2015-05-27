@@ -1,4 +1,4 @@
-package vombokombo.BettingSimulator.view;
+package vombokombo.BettingSimulator.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
