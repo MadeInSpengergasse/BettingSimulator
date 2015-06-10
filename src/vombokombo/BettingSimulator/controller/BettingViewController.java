@@ -20,6 +20,7 @@ public class BettingViewController {
 
     private static final int INCREASEDECREASEBY = 100;
     private float amountInt = 100;
+
     private MainApp mainapp;
     @FXML
     private Text teamA;

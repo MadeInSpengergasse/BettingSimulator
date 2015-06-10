@@ -199,7 +199,7 @@ public class MainApp extends Application {
      * @param status 0=lost; 1=draw; 2=win
      * @param betMoney the amount bet
      */
-    public void showEndOfMatchView(int status, float betMoney) {
+    public void showEndOfMatchView(int status, float betMoney, int oddsOfTeam) {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -217,7 +217,7 @@ public class MainApp extends Application {
 
             EndOfMatchViewController controller = loader.getController();
             controller.setMainApp(this);
-            controller.setImportantThings(status, betMoney);
+            controller.setImportantThings(status, betMoney, oddsOfTeam);
 
 
             endOfMatchStage.showAndWait();

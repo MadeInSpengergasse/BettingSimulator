@@ -21,7 +21,7 @@ public class EndOfMatchViewController {
      */
     private int won;
 
-    private int wonMoney = 0;
+    private float wonMoney = 0;
 
     @FXML
     private Text wonLost;
@@ -45,11 +45,12 @@ public class EndOfMatchViewController {
      * @param status describes either if you have won, lost or if it is a draw
      * @param betMoney is the money you bet
      */
-    public void setImportantThings(int status, float betMoney) {
+    public void setImportantThings(int status, float betMoney, int oddsOfTeam) {
         setWon(status);
-        setWonMoney(betMoney, status);
+        setWonMoney(betMoney, status, oddsOfTeam);
         setBalance();
         setMainWonLost(status);
+
     }
 
     /**
@@ -93,14 +94,17 @@ public class EndOfMatchViewController {
      * Sets the Money you win/lose after a match
      * @param betMoney the money you win/lose
      * @param status outcome of the match
+     * @param oddsOfTeam the odds of the team you bet on
      */
-    public void setWonMoney(float betMoney, int status) {
+    public void setWonMoney(float betMoney, int status, int oddsOfTeam) {
         System.out.println("Bet money: " + betMoney);
         if (status == 0) {
             this.wonMoney -= betMoney;
         } else if (status == 2) {
-            this.wonMoney += betMoney;
+            this.wonMoney += betMoney * ((100 - (float) oddsOfTeam) / 100);
         }
+        System.out.println(wonMoney);
+        System.out.println(((100 - (float) oddsOfTeam) / 100));
         DecimalFormat df = new DecimalFormat("0.00");
         wonLost.setText(df.format(wonMoney) + " " + MainApp.EURO);
         MainApp.mainapp.setMoney(MainApp.getMoney() + wonMoney);

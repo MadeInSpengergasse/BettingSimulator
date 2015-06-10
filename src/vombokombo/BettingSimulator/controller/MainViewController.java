@@ -111,7 +111,7 @@ public class MainViewController {
      */
     @FXML
     private void openEndOfMatch() {
-        mainapp.showEndOfMatchView(1, 100);
+        mainapp.showEndOfMatchView(1, 100, 50);
     }
 
     /**

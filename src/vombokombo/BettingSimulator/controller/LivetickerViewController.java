@@ -252,6 +252,7 @@ public class LivetickerViewController {
     public void handleEndOfMatch() {
         ((Stage) getTimeLabel().getScene().getWindow()).close();
         int status;
+
         if (getScoreTeamA() == getScoreTeamB()) {
             status = 1;
         } else if (((getScoreTeamA() > getScoreTeamB()) && betOnA) || ((getScoreTeamB() > getScoreTeamA()) && !betOnA)) {
@@ -259,9 +260,13 @@ public class LivetickerViewController {
         } else {
             status = 0;
         }
-        Platform.runLater(() -> {
-            mainApp.showEndOfMatchView(status, moneyBet);
-        });
+        int oddsOfTeam;
+        if (betOnA)
+            oddsOfTeam = oddsA;
+        else
+            oddsOfTeam = 100 - oddsA;
+
+        Platform.runLater(() -> mainApp.showEndOfMatchView(status, moneyBet, oddsOfTeam));
     }
 
 }

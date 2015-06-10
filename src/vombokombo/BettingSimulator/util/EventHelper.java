@@ -18,8 +18,8 @@ public class EventHelper {
      */
     public static Event generateEvent(String teamNameA, String teamNameB, int oddsA, int timeSeconds) {
         Random random = new Random();
-        if (random.nextInt(100) <= 3) {
-            if (oddsA >= random.nextInt(100)) {
+        if (random.nextInt(1000) <= 25) {
+            if (oddsA >= random.nextInt(100) || random.nextInt(10) == 0) {
                 return new Event(timeSeconds, (teamNameA + " scored a goal!"), EventType.GOAL_A);
                 //TODO: Add randomness! and more events!
             } else {
