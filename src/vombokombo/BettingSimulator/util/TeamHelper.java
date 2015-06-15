@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class TeamHelper {
 
-    public static final String FILENAME = "/teamnames.txt";
+    private static final String FILENAME = "/teamnames.txt";
     private static ArrayList<String> teamnames;
 
     /**
@@ -36,6 +36,7 @@ public class TeamHelper {
 
     /**
      * loads the file from FILENAME into the arraylist
+     *
      * @throws IOException
      */
     private static void load() throws IOException {

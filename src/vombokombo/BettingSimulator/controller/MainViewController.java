@@ -15,18 +15,15 @@ import java.util.Random;
 
 public class MainViewController {
 
+    private final ObservableList<Match> matches;
     @FXML
     private Text moneyText;
-
     @FXML
     private Text matchesWonText;
-
     @FXML
     private Text matchesLostText;
-
     @FXML
     private TableView<Match> matchesTable;
-
     /*
       @FXML
       private TableColumn<Match, Number> oddsA;
@@ -42,13 +39,8 @@ public class MainViewController {
   */
     @FXML
     private TableColumn<Match, String> odds;
-
     @FXML
     private TableColumn<Match, String> teams;
-
-    private ObservableList<Match> matches;
-
-
     private MainApp mainapp;
 
     /**
@@ -63,18 +55,12 @@ public class MainViewController {
      */
     @FXML
     private void initialize() {
-        //TODO: CHANGE AND INIT!!!
-//        oddsA.setCellValueFactory(cellData -> cellData.getValue().oddsAProperty());
-//        oddsB.setCellValueFactory(cellData -> cellData.getValue().oddsBProperty());
-//        teamA.setCellValueFactory(cellData -> cellData.getValue().teamAProperty());
-//        teamB.setCellValueFactory(cellData -> cellData.getValue().teamBProperty());
         odds.setCellValueFactory(cellData -> cellData.getValue().oddsProperty());
         teams.setCellValueFactory(cellData -> cellData.getValue().teamsProperty());
         generateMatches(40);
         matchesTable.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                 if (mouseEvent.getClickCount() == 2) {
-//                    System.out.println("double click");
                     mainapp.showBettingView(matchesTable.getSelectionModel().getSelectedItem());
                 }
             }
@@ -124,6 +110,7 @@ public class MainViewController {
 
     /**
      * Set-method for mainapp
+     *
      * @param mainapp the mainapp you want to merge with your attribute mainapp
      */
     public void setMainApp(MainApp mainapp) {
@@ -134,6 +121,7 @@ public class MainViewController {
 
     /**
      * Get-method for moneyText
+     *
      * @return moneyText
      */
     public Text getMoneyText() {
@@ -142,6 +130,7 @@ public class MainViewController {
 
     /**
      * Get-method for matchesWonText
+     *
      * @return matchesWonText
      */
     public Text getMatchesWonText() {
@@ -150,6 +139,7 @@ public class MainViewController {
 
     /**
      * Get-method for matchesLostText
+     *
      * @return matchesLostText
      */
     public Text getMatchesLostText() {
@@ -158,9 +148,10 @@ public class MainViewController {
 
     /**
      * Generates random matches
+     *
      * @param count amount of matches which are created
      */
-    public void generateMatches(int count) {
+    private void generateMatches(int count) {
         Random random = new Random();
         for (int i = 0; i < count; i++) {
             int oddsA = random.nextInt(80) + 10;
@@ -175,12 +166,13 @@ public class MainViewController {
 
     /**
      * adds a match
+     *
      * @param teamA teamA
      * @param teamB teamB
      * @param oddsA oddsA
      * @param oddsB oddsB
      */
-    public void addMatch(String teamA, String teamB, int oddsA, int oddsB) {
+    private void addMatch(String teamA, String teamB, int oddsA, int oddsB) {
         //TODO: Add match!!
         matches.add(new Match(teamA, teamB, oddsA, oddsB));
     }

@@ -9,13 +9,13 @@ import javafx.beans.property.StringProperty;
 public class Match {
 
 
-    private String teamA;
-    private String teamB;
-    private int oddsA;
-    private int oddsB;
+    private final String teamA;
+    private final String teamB;
+    private final int oddsA;
+    private final int oddsB;
 
-    private StringProperty odds;
-    private StringProperty teams;
+    private final StringProperty odds;
+    private final StringProperty teams;
 
     /**
      * Constructor
@@ -44,6 +44,7 @@ public class Match {
 
     /**
      * Get-method for teamA
+     *
      * @return teamA
      */
     public String getTeamA() {
@@ -52,6 +53,7 @@ public class Match {
 
     /**
      * Get-method for teamB
+     *
      * @return teamB
      */
     public String getTeamB() {
@@ -60,6 +62,7 @@ public class Match {
 
     /**
      * Get-method for oddsA
+     *
      * @return oddsA
      */
     public int getOddsA() {
@@ -68,6 +71,7 @@ public class Match {
 
     /**
      * Get-method for oddsB
+     *
      * @return oddsB
      */
     public int getOddsB() {
@@ -76,6 +80,7 @@ public class Match {
 
     /**
      * Get-method for odds
+     *
      * @return odds.get
      */
     public String getOdds() {
@@ -84,6 +89,7 @@ public class Match {
 
     /**
      * Get-method for the odds property
+     *
      * @return odds
      */
     public StringProperty oddsProperty() {
@@ -92,6 +98,7 @@ public class Match {
 
     /**
      * Get-method for teams
+     *
      * @return teams.get
      */
     public String getTeams() {
@@ -100,7 +107,8 @@ public class Match {
 
     /**
      * Get-method for tea
-     * @return
+     *
+     * @return the property of teams
      */
     public StringProperty teamsProperty() {
         return teams;

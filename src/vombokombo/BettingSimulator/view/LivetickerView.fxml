@@ -6,71 +6,65 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/8.0.40"
             fx:controller="vombokombo.BettingSimulator.controller.LivetickerViewController">
-    <children>
-        <Label layoutX="148.0" layoutY="10.0" text="Liveticker" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label fx:id="time" layoutX="167.0" layoutY="46.0" text="00:00:00" textAlignment="CENTER" AnchorPane.topAnchor="46.0">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
-        <SplitPane dividerPositions="0.1525096525096525" layoutX="120.0" layoutY="386.0" orientation="VERTICAL"
-                   prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
-            <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <SplitPane dividerPositions="0.5" layoutX="93.0" layoutY="48.0" prefHeight="256.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <items>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                    <children>
-                                        <TextArea fx:id="teamA" editable="false" layoutX="-11.0" layoutY="-11.0" prefHeight="254.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                    <children>
-                                        <TextArea fx:id="teamB" editable="false" layoutX="-19.0" layoutY="6.0" prefHeight="254.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    </children>
-                                </AnchorPane>
-                            </items>
-                        </SplitPane>
-                    </children>
+    <Label layoutX="148.0" layoutY="10.0" text="Liveticker" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
+        <font>
+            <Font size="25.0"/>
+        </font>
+    </Label>
+    <Label fx:id="time" layoutX="167.0" layoutY="46.0" text="00:00:00" textAlignment="CENTER"
+           AnchorPane.topAnchor="46.0">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <SplitPane dividerPositions="0.1525096525096525" layoutX="120.0" layoutY="386.0" orientation="VERTICAL"
+               prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <SplitPane dividerPositions="0.5" layoutX="93.0" layoutY="48.0" prefHeight="256.0"
+                       prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <TextArea fx:id="teamA" editable="false" layoutX="-11.0" layoutY="-11.0"
+                              prefHeight="254.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0"/>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <HBox spacing="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
-                            <children>
-                                <Button mnemonicParsing="false" onAction="#startButton" text="Start" />
-                                <Button mnemonicParsing="false" onAction="#stop_resumeButton" text="Stop/Resume" />
-                                <Button layoutX="8.0" layoutY="214.0" mnemonicParsing="false" onAction="#skipButton" text="Skip" />
-                            </children>
-                        </HBox>
-                        <Button layoutX="339.0" layoutY="214.0" mnemonicParsing="false" onAction="#closeButton" text="Close" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-                        <TableView fx:id="eventTable" layoutX="89.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <columns>
-                                <TableColumn fx:id="timeStamp" maxWidth="107.0" prefWidth="74.0" resizable="false" text="Timestamp" />
-                                <TableColumn fx:id="event" prefWidth="322.0" text="Event" />
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <TextArea fx:id="teamB" editable="false" layoutX="-19.0" layoutY="6.0"
+                              prefHeight="254.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0"/>
                 </AnchorPane>
-            </items>
-        </SplitPane>
-        <Label fx:id="scoreTeamA" layoutX="14.0" layoutY="24.0" text="0" AnchorPane.leftAnchor="30.0">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Label>
-        <Label fx:id="scoreTeamB" layoutX="369.0" layoutY="24.0" text="0" AnchorPane.rightAnchor="30.0">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Label>
-    </children>
+            </SplitPane>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <HBox spacing="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
+                <Button mnemonicParsing="false" onAction="#startButton" text="Start"/>
+                <Button mnemonicParsing="false" onAction="#stop_resumeButton" text="Stop/Resume"/>
+            </HBox>
+            <TableView fx:id="eventTable" layoutX="89.0" prefHeight="200.0" prefWidth="200.0"
+                       AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                       AnchorPane.topAnchor="0.0">
+                <columns>
+                    <TableColumn fx:id="timeStamp" maxWidth="107.0" prefWidth="74.0" resizable="false"
+                                 text="Timestamp"/>
+                    <TableColumn fx:id="event" prefWidth="322.0" text="Event"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+        </AnchorPane>
+    </SplitPane>
+    <Label fx:id="scoreTeamA" layoutX="14.0" layoutY="24.0" text="0" AnchorPane.leftAnchor="30.0">
+        <font>
+            <Font size="30.0"/>
+        </font>
+    </Label>
+    <Label fx:id="scoreTeamB" layoutX="369.0" layoutY="24.0" text="0" AnchorPane.rightAnchor="30.0">
+        <font>
+            <Font size="30.0"/>
+        </font>
+    </Label>
 </AnchorPane>

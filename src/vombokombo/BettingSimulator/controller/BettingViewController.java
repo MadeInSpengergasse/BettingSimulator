@@ -21,7 +21,6 @@ public class BettingViewController {
     private static final int INCREASEDECREASEBY = 100;
     private float amountInt = 100;
 
-    private MainApp mainapp;
     @FXML
     private Text teamA;
     @FXML
@@ -41,7 +40,6 @@ public class BettingViewController {
     private void initialize() {
         amount.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                System.out.println("focus lost");
                 setAmount(Float.parseFloat(0 + amount.getText().replaceAll(NON_NUMERIC_REGEX, "")));
                 String bet = amount.getText().replaceAll(NON_NUMERIC_REGEX, "");
                 if (Float.parseFloat(bet) > MainApp.getMoney()) {
@@ -59,6 +57,7 @@ public class BettingViewController {
 
     /**
      * Sets the textfields to the given match
+     *
      * @param match match data
      */
     public void setImportantThings(Match match) {
@@ -72,20 +71,13 @@ public class BettingViewController {
 
     /**
      * Sets the amount to bet
+     *
      * @param amount amount to bet
      */
-    public void setAmount(float amount) {
+    private void setAmount(float amount) {
         DecimalFormat df = new DecimalFormat("0.00");
         this.amountInt = amount;
         this.amount.setText(df.format(amount) + " " + MainApp.EURO);
-    }
-
-    /**
-     * Sets the mainapp
-     * @param mainapp is the mainapp you want to merge with the attribute mainapp
-     */
-    public void setMainApp(MainApp mainapp) {
-        this.mainapp = mainapp;
     }
 
     /**
@@ -93,8 +85,6 @@ public class BettingViewController {
      */
     @FXML
     private void betOnA() {
-        //TODO: WRITE
-//        System.out.println(amountInt);
         closeWindow();
         Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), true, amountInt, Integer.parseInt(oddsA.getText())));
     }
@@ -104,8 +94,6 @@ public class BettingViewController {
      */
     @FXML
     private void betOnB() {
-        //TODO: WRITE
-//        System.out.println(amountInt);
         closeWindow();
         Platform.runLater(() -> MainApp.mainapp.showLiveticker(teamA.getText(), teamB.getText(), false, amountInt, Integer.parseInt(oddsA.getText())));
     }

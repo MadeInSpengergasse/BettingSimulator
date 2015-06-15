@@ -11,12 +11,12 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import vombokombo.BettingSimulator.MainApp;
 import vombokombo.BettingSimulator.model.Event;
-import vombokombo.BettingSimulator.model.Event.EventType;
 import vombokombo.BettingSimulator.util.Counter;
 
 public class LivetickerViewController {
 
-    Counter counter;
+    private final ObservableList<Event> events;
+    private Counter counter;
     private String teamNameA;
     private String teamNameB;
     private boolean betOnA;
@@ -39,7 +39,6 @@ public class LivetickerViewController {
     @FXML
     private TableColumn<Event, String> event;
     private MainApp mainApp;
-    private ObservableList<Event> events;
 
     /**
      * Constructor
@@ -50,6 +49,7 @@ public class LivetickerViewController {
 
     /**
      * Get-method for TeamNameA
+     *
      * @return teamNameA
      */
     public String getTeamNameA() {
@@ -58,6 +58,7 @@ public class LivetickerViewController {
 
     /**
      * Get-method for TeamNameB
+     *
      * @return teamNameB
      */
     public String getTeamNameB() {
@@ -69,14 +70,13 @@ public class LivetickerViewController {
      */
     @FXML
     private void initialize() {
-        System.out.println("init livetickerviewcontroller");
-
         event.setCellValueFactory(cellData -> cellData.getValue().getEventProperty());
         timeStamp.setCellValueFactory(cellData -> cellData.getValue().getTimeStampProperty());
     }
 
     /**
      * Set-method for mainApp
+     *
      * @param mainApp is the mainApp you want the attribute mainApp to be
      */
     public void setMainApp(MainApp mainApp) {
@@ -86,34 +86,12 @@ public class LivetickerViewController {
     }
 
     /**
-     * Action performed when hitting the Close button
-     */
-    @FXML
-    public void closeButton() {
-        ((Stage) time.getScene().getWindow()).close();
-        // System.exit(0);
-    }
-
-    /**
-     * Action performed when hitting the Skip button
-     */
-    @FXML
-    public void skipButton() {
-        System.out.println("Skip Button");
-        if (counter != null) {
-            addEvent(new Event(counter.getTimeSeconds(), "testevent", EventType.UNKNOWN));
-        }
-    }
-
-    /**
      * Action performed when hitting the Start button
      */
     @FXML
     public void startButton() {
-        System.out.println("Start Button");
         if (counter == null) {
-            System.out.println("Real Start");
-            counter = new Counter(time, 1, this, 90, mainApp, oddsA);
+            counter = new Counter(time, 1, this, 90, oddsA);
         }
     }
 
@@ -125,69 +103,61 @@ public class LivetickerViewController {
         if (counter != null) {
             counter.stopResume();
         }
-        System.out.println("StopResume Button");
-    }
-
-    /**
-     * Action performed when hitting the Forward button
-     */
-    @FXML
-    public void forwardButton() {
-        System.out.println("Forward Button, NOTHING HAPPENS!!");
-        /*
-        if (counter == null) {
-            counter = new Counter(time, 1, this, 10);
-        }
-        */
     }
 
     /**
      * Set-method for TeamA
+     *
      * @param teamA is used for setting the text in teamA and for merging with the attribute teamNameA
      */
-    public void setTeamA(String teamA) {
+    private void setTeamA(String teamA) {
         this.teamA.setText(teamA);
         this.teamNameA = teamA;
     }
 
     /**
      * Set-method for TeamB
+     *
      * @param teamB is used for setting the text in teamB and for merging with the attribute teamNameB
      */
-    public void setTeamB(String teamB) {
+    private void setTeamB(String teamB) {
         this.teamB.setText(teamB);
         this.teamNameB = teamB;
     }
 
     /**
      * Get-method for Team-Score A
+     *
      * @return the Team-Score
      */
-    public int getScoreTeamA() {
+    private int getScoreTeamA() {
         return Integer.parseInt(scoreTeamA.getText());
     }
 
     /**
      * Set the Score of Team A
+     *
      * @param score is used for setting the text of scoreTeamA
      */
-    public void setScoreTeamA(String score) {
+    private void setScoreTeamA(String score) {
         scoreTeamA.setText(score);
     }
 
     /**
      * Get-method for Team-Score B
+     *
      * @return the Team-Score
      */
-    public int getScoreTeamB() {
+    private int getScoreTeamB() {
         return Integer.parseInt(scoreTeamB.getText());
     }
 
     /**
      * Set the Score of Team B
+     *
      * @param score is used for setting the text of scoreTeamA
      */
-    public void setScoreTeamB(String score) {
+    private void setScoreTeamB(String score) {
         scoreTeamB.setText(score);
     }
 
@@ -199,6 +169,7 @@ public class LivetickerViewController {
 
     /**
      * Adds an Event to the list
+     *
      * @param event is the event you want to add
      */
     public void addEvent(Event event) {
@@ -224,19 +195,21 @@ public class LivetickerViewController {
 
     /**
      * Get-method for TimeLabel
+     *
      * @return time
      */
-    public Label getTimeLabel() {
+    private Label getTimeLabel() {
         return time;
     }
 
     /**
      * Sets the teams, the bet, the money and the odds of team A
-     * @param teamA teamA
-     * @param teamB teamB
-     * @param betOnA determines if you bet on A or B
+     *
+     * @param teamA    teamA
+     * @param teamB    teamB
+     * @param betOnA   determines if you bet on A or B
      * @param moneyBet the amount you bet
-     * @param oddsA the odds of A (odds of B=100-oddsA)
+     * @param oddsA    the odds of A (odds of B=100-oddsA)
      */
     public void setImportantThing(String teamA, String teamB, boolean betOnA, float moneyBet, int oddsA) {
         setTeamA(teamA);

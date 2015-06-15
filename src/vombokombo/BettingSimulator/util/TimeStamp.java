@@ -4,8 +4,8 @@ import java.text.NumberFormat;
 
 public class TimeStamp {
 
-    public static final int MINUTES_IN_AN_HOUR = 60;
-    public static final int SECONDS_IN_A_MINUTE = 60;
+    private static final int MINUTES_IN_AN_HOUR = 60;
+    private static final int SECONDS_IN_A_MINUTE = 60;
 
     /**
      * Converts the total seconds provided into a human-readable string in the format HH:MM:SS
@@ -22,25 +22,28 @@ public class TimeStamp {
 
     /**
      * Returns the seconds in the minute without everything else
+     *
      * @param totalSeconds the total seconds to convert
      * @return the seconds in the minute
      */
-    public static int getSeconds(int totalSeconds) {
+    private static int getSeconds(int totalSeconds) {
         return totalSeconds % SECONDS_IN_A_MINUTE;
     }
 
     /**
      * Returns the minutes in the hour without everything else
+     *
      * @param totalSeconds the total seconds to convert
      * @return the minutes in the hour
      */
-    public static int getMinutes(int totalSeconds) {
+    private static int getMinutes(int totalSeconds) {
         int totalMinutes = totalSeconds / SECONDS_IN_A_MINUTE;
         return totalMinutes % MINUTES_IN_AN_HOUR;
     }
 
     /**
      * Returns the total minutes (without the hour thing) without everything else
+     *
      * @param totalSeconds the total seconds to convert
      * @return the minutes (without subtracted hours)
      */
@@ -50,10 +53,11 @@ public class TimeStamp {
 
     /**
      * Returns the hours without everything else
+     *
      * @param totalSeconds the total seconds to convert
      * @return the hours
      */
-    public static int getHours(int totalSeconds) {
+    private static int getHours(int totalSeconds) {
         return getTotalMinutes(totalSeconds) / MINUTES_IN_AN_HOUR;
     }
 

@@ -6,9 +6,9 @@ import vombokombo.BettingSimulator.util.TimeStamp;
 
 public class Event {
 
-    private StringProperty timeStamp;
-    private StringProperty event;
-    private EventType type;
+    private final StringProperty timeStamp;
+    private final StringProperty event;
+    private final EventType type;
 
     public Event(int timeSeconds, String event, EventType type) {
         this.timeStamp = new SimpleStringProperty(TimeStamp.convert(timeSeconds));
@@ -34,6 +34,7 @@ public class Event {
 
     /**
      * Get-method for event
+     *
      * @return event.get
      */
     public String getEvent() {
@@ -42,6 +43,7 @@ public class Event {
 
     /**
      * Get-method for the timeStamp property
+     *
      * @return timeStamp
      */
     public StringProperty getTimeStampProperty() {
@@ -50,6 +52,7 @@ public class Event {
 
     /**
      * Get-method for the event property
+     *
      * @return event
      */
     public StringProperty getEventProperty() {
@@ -58,6 +61,7 @@ public class Event {
 
     /**
      * Get-method for type
+     *
      * @return type
      */
     public EventType getType() {

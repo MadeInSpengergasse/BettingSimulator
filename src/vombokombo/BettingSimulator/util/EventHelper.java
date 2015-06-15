@@ -5,7 +5,7 @@ import vombokombo.BettingSimulator.model.Event.EventType;
 
 import java.util.Random;
 
-public class EventHelper {
+class EventHelper {
 
     /**
      * generates an event based on the following parameters

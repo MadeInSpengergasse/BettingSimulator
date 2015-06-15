@@ -10,7 +10,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import vombokombo.BettingSimulator.controller.*;
+import vombokombo.BettingSimulator.controller.BettingViewController;
+import vombokombo.BettingSimulator.controller.EndOfMatchViewController;
+import vombokombo.BettingSimulator.controller.LivetickerViewController;
+import vombokombo.BettingSimulator.controller.MainViewController;
 import vombokombo.BettingSimulator.model.Match;
 
 import java.io.File;
@@ -18,20 +21,17 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Properties;
 
-
 public class MainApp extends Application {
 
     public static final String EURO = "\u20AC";
 
     public static MainApp mainapp;
-
-    public static Stage primaryStage;
     public static File currentFile = null;
+    private static Stage primaryStage;
     private static float money;
     private static int matchesWon;
     private static int matchesLost;
     private BorderPane rootLayout;
-    private MainViewController mainViewController;
     private Text moneyText;
     private Text matchesWonText;
     private Text matchesLostText;
@@ -51,6 +51,7 @@ public class MainApp extends Application {
 
     /**
      * Sets the local values provided by the Properties file
+     *
      * @param props the properties to set
      */
     public static void setProperties(Properties props) {
@@ -70,6 +71,7 @@ public class MainApp extends Application {
 
     /**
      * sets the money int and the text
+     *
      * @param money the value to set
      */
     public void setMoney(float money) {
@@ -80,9 +82,10 @@ public class MainApp extends Application {
 
     /**
      * sets the save provided by the 3 parameters
-     * @param money
-     * @param matchesWon
-     * @param matchesLost
+     *
+     * @param money       the money
+     * @param matchesWon  amount matches won
+     * @param matchesLost amount matches lost
      */
     public void setSave(float money, int matchesWon, int matchesLost) {
         setMoney(money);
@@ -111,15 +114,12 @@ public class MainApp extends Application {
     /**
      * Initializes the root layout.
      */
-    public void initRootLayout() {
+    private void initRootLayout() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = loader.load();
-
-            RootLayoutController controller = loader.getController();
-            controller.setMainApp(this);
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -136,11 +136,12 @@ public class MainApp extends Application {
 
     /**
      * Shows the liveticker with the provided values
-     * @param teamA
-     * @param teamB
-     * @param betOnA
-     * @param moneyBet
-     * @param oddsA
+     *
+     * @param teamA    Name of Team A
+     * @param teamB    Name of Team B
+     * @param betOnA   true if you bet on A
+     * @param moneyBet the amount of money bet
+     * @param oddsA    the odds of team A
      */
     public void showLiveticker(String teamA, String teamB, boolean betOnA, float moneyBet, int oddsA) {
         try {
@@ -172,7 +173,7 @@ public class MainApp extends Application {
     /**
      * Shows the main window (in the root layout)
      */
-    public void showMainView() {
+    private void showMainView() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -182,7 +183,7 @@ public class MainApp extends Application {
             // Set person overview into the center of root layout.
             rootLayout.setCenter(mainView);
 
-            mainViewController = loader.getController();
+            MainViewController mainViewController = loader.getController();
             mainViewController.setMainApp(this);
             moneyText = mainViewController.getMoneyText();
             matchesWonText = mainViewController.getMatchesWonText();
@@ -196,7 +197,8 @@ public class MainApp extends Application {
 
     /**
      * Shows the end of match with the provided values
-     * @param status 0=lost; 1=draw; 2=win
+     *
+     * @param status   0=lost; 1=draw; 2=win
      * @param betMoney the amount bet
      */
     public void showEndOfMatchView(int status, float betMoney, int oddsOfTeam) {
@@ -216,7 +218,6 @@ public class MainApp extends Application {
             endOfMatchStage.setResizable(false);
 
             EndOfMatchViewController controller = loader.getController();
-            controller.setMainApp(this);
             controller.setImportantThings(status, betMoney, oddsOfTeam);
 
 
@@ -229,7 +230,8 @@ public class MainApp extends Application {
 
     /**
      * Shows the betting window with the values from the provided match
-     * @param match
+     *
+     * @param match reference to the Match to show
      */
     public void showBettingView(Match match) {
         try {
@@ -248,7 +250,6 @@ public class MainApp extends Application {
             bettingViewStage.setResizable(false);
 
             BettingViewController controller = loader.getController();
-            controller.setMainApp(this);
             controller.setImportantThings(match);
 
             bettingViewStage.showAndWait();
@@ -267,18 +268,20 @@ public class MainApp extends Application {
 
     /**
      * sets the textfield and the int to the provided value
+     *
      * @param matchesWon the number of matches won
      */
-    public void setMatchesWon(int matchesWon) {
+    private void setMatchesWon(int matchesWon) {
         MainApp.matchesWon = matchesWon;
         matchesWonText.setText(matchesWon + "");
     }
 
     /**
      * sets the textfield and the int to the provided value
+     *
      * @param matchesLost the number of matches lost
      */
-    public void setMatchesLost(int matchesLost) {
+    private void setMatchesLost(int matchesLost) {
         MainApp.matchesLost = matchesLost;
         matchesLostText.setText(matchesLost + "");
     }

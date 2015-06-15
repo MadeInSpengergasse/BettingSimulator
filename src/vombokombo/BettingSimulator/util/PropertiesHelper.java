@@ -15,14 +15,14 @@ import java.util.Properties;
  */
 public class PropertiesHelper {
 
-    public static final String ORIGINAL_FILENAME = "BettingSimulator.db";
+    private static final String ORIGINAL_FILENAME = "BettingSimulator.db";
 
     /**
      * saves the properties from the MainApp class to the provided file
      *
      * @param file the file where to save in
      */
-    public static void saveToFile(File file) {
+    private static void saveToFile(File file) {
         if (file == null)
             return;
         try {
@@ -37,9 +37,10 @@ public class PropertiesHelper {
 
     /**
      * loads the save from the provided files and configures everything in the MainApp class
+     *
      * @param file the file to load from
      */
-    public static void loadSaveFromFile(File file) {
+    private static void loadSaveFromFile(File file) {
         if (file == null)
             return;
         Properties props = new Properties();

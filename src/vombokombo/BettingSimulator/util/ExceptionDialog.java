@@ -10,7 +10,7 @@ import javafx.scene.layout.Priority;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-public class ExceptionDialog {
+class ExceptionDialog {
 
     /**
      * Can get called in an catch block
