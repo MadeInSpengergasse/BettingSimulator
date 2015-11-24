@@ -13,5 +13,7 @@
     <target name="jar" description="JARs the Task">
         <jar destfile="MyTask.jar" basedir="classes"/>
     </target>
+    
+    <target name="test" depends="compile"/>
 
 </project>
